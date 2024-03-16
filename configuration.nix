@@ -92,6 +92,7 @@
 				vlc
 				kdePackages.kdeconnect-kde
 				google-chrome
+				tree-sitter
 		];
 	};
 
