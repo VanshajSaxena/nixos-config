@@ -1,16 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
-	imports =
-		[ # Include the results of the hardware scan.
-		./hardware-configuration.nix
-		];
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+# Enable the Flakes feature and the accompanying new nix command-line tool
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.systemd-boot.configurationLimit = 5;
@@ -42,21 +43,13 @@
 		LC_TIME = "en_IN";
 	};
 
-	services.xserver.enable = true;
-
-	services.xserver.displayManager.sddm.enable = true;
 	services.desktopManager.plasma6.enable = true;
 
 	services.xserver = {
+		enable = true;
+		displayManager.sddm.enable = true;
 		xkb.layout = "us";
 		xkb.variant = "";
-	};
-
-
-	services.openssh = {
-		enable = true;
-		settings.PasswordAuthentication = true;
-		settings.KbdInteractiveAuthentication = false;
 	};
 
 	services.printing.enable = true;
@@ -70,33 +63,25 @@
 		alsa.support32Bit = true;
 		pulse.enable = true;
 	};
+  # Omit previous configuration settings...
 
-	users.defaultUserShell = pkgs.zsh;
-	users.users.vanshaj = {
-		isNormalUser = true;
-		description = "Vanshaj Saxena";
-		extraGroups = [ "networkmanager" "wheel" ];
-		openssh.authorizedKeys.keys = [
-		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM80MlQpoUkrQrYIfn5yE9SmxKsnVs4tt35SZ+T0bWjm vanshaj@VSENVY"
-		];
-		packages = with pkgs; [
-			firefox
-				kate
-				lazygit
-				neovim
-				kitty
-				fd
-				ripgrep
-				nodejs
-				qbittorrent
-				vlc
-				kdePackages.kdeconnect-kde
-				google-chrome
-				tree-sitter
-		];
-	};
+  # Add user 'vanshaj'
+  users.users.vanshaj = {
+    isNormalUser = true;
+    description = "Vanshaj Saxena";
+    extraGroups = [ "networkmanager" "wheel" ];
+	openssh.authorizedKeys.keys = [
+	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM80MlQpoUkrQrYIfn5yE9SmxKsnVs4tt35SZ+T0bWjm vanshaj@VSENVY"
+	];
+	shell = pkgs.zsh;
+    packages = with pkgs; [
+      firefox
+    #  thunderbird
+    ];
+  };
 
-	nixpkgs.config.allowUnfree = true;
+# Allow unfree software
+  nixpkgs.config.allowUnfree = true;
 	fonts.packages = with pkgs; [
 		(nerdfonts.override { fonts = [ "VictorMono" ]; })
 	];
@@ -109,47 +94,49 @@
 		{ from = 1714; to = 1764; } # KDE Connect
 		];  
 	};  
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings = {
+      X11Forwarding = true;
+      PermitRootLogin = "no"; # disable root login
+      PasswordAuthentication = true; # disable password login
+    };
+    openFirewall = true;
+  };
 
-	environment.shells = with pkgs; [ zsh ];
-	environment.variables.EDITOR = "nvim";
-	environment.systemPackages = with pkgs; [
-		wl-clipboard # wayland clipboard
-			sshfs # kdeconnect ssh fuse filesystem
-			htop # system monitor
-			btop # system monitor
-			tmux # terminal multiplexer
-			gcc # c compiler
-			zsh # z shell
-			oh-my-zsh # z shell dressing
-			zoxide # better cd command
-			git # version control
-			bat # better cat command
-			eza # modern ls
-			cargo
-			sourcekit-lsp # swift development
-			glibc
-			swift
-			swiften
-			swiftPackages.swift-unwrapped
-			swiftPackages.swiftpm
-			swiftPackages.xcbuild
-	];
-
+  # Omit the rest of the configuration...
+  environment.systemPackages = with pkgs; [
+    # Flakes clones its dependencies through the git command,
+    # so git must be installed first
+    git
+    neovim
+    wget
+    curl
+	wl-clipboard # wayland clipboard
+	sshfs # kdeconnect ssh fuse filesystem
+	htop # system monitor
+	tmux # terminal multiplexer
+	gcc # c compiler
+	zsh # z shell
+	fd
+	ripgrep
+			#cargo
+			#glibc
+			#swift
+			#swiften
+			#swiftPackages.swift-unwrapped
+			#swiftPackages.swiftpm
+			#swiftPackages.xcbuild
+  ];
+  # Set the default editor to nvim
+  environment.variables.EDITOR = "nvim";
+	programs.zsh.enable = true;
 	programs.nix-ld.enable = true;
 	programs.nix-ld.libraries = with pkgs; [
 # Add any missing dynamic libraries for unpackaged 
 # programs here, NOT in environment.systemPackages
 	];
-
-	programs.neovim.defaultEditor = true;
-	programs.zsh = {
-		enable = true;
-		ohMyZsh = {
-			enable =true;
-			plugins = [ "git" "colored-man-pages" "zoxide" ];
-			theme = "simple";
-		};
-	};
-	system.stateVersion = "23.11"; # Did you read the comment?
+system.stateVersion = "23.11"; # Did you read the comment?
 
 }
