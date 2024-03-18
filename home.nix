@@ -118,14 +118,63 @@
     userEmail = "vs110405@outlook.com";
   };
 
+programs.bat = {
+enable = true;
+config = {
+		theme = "gruvbox-dark";
+	};
+};
+
+	programs.eza = {
+		enable = true;
+		git = true;
+		icons = true;
+	};
+
+  programs.btop = {
+	  enable = true;
+	  settings = {
+		  color_theme = "gruvbox_material_dark";
+		  theme_background = false;
+		  truecolor = true;
+		  vim_keys = true;
+		  rounded_corners = true;
+		  update_ms = 100;
+		  selected_battery = "BAT1";
+	  };
+  };
+
   programs.zsh = {
 	  enable = true;
+	  shellAliases = {
+		lz="lazygit";
+		nf="fastfetch";
+		};
 	  oh-my-zsh = {
 		  enable = true;
 		  plugins = [ "git" "colored-man-pages" "zoxide" ];
 		  theme = "simple";
+		  extraConfig = ''
+				# this function helps me to attach to an existing tmux session
+				if [ -z "$TMUX" ]; then
+					attach_session=$(tmux 2> /dev/null ls -F \
+						'#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
+						awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
+
+					if [ -n "$attach_session" ]; then
+						tmux attach -t "$attach_session"
+					else
+						tmux
+					fi
+				fi
+		  '';
 	  };
   };
+
+  programs.neovim = {
+		enable = true;
+		vimAlias = true;
+};
 
   # starship - an customizable prompt for any shell
   # programs.starship = {
