@@ -111,6 +111,7 @@
     # so git must be installed first
     git
     neovim
+    unzip
     wget
     curl
 	wl-clipboard # wayland clipboard

@@ -31,21 +31,24 @@
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
+	nodejs
+	jdk17 # jdk
+	cargo # rust package manager
+	sourcekit-lsp # swift development
+
 	lazygit
-	kitty
-	#nodejs
+	#kitty
 	qbittorrent
 	vlc
 	kdePackages.kdeconnect-kde
 	google-chrome
 	tree-sitter
 
-	btop # system monitor
+	#btop # system monitor
 	oh-my-zsh # z shell dressing
 	zoxide # better cd command
 	bat # better cat command
 	eza # modern ls
-	sourcekit-lsp # swift development
 	fastfetch
     #neofetch
     #nnn # terminal file manager
@@ -53,7 +56,6 @@
     # archives
     #zip
     #xz
-    #unzip
     #p7zip
 
     # utils
@@ -118,12 +120,12 @@
     userEmail = "vs110405@outlook.com";
   };
 
-programs.bat = {
-enable = true;
-config = {
-		theme = "gruvbox-dark";
-	};
-};
+  programs.bat = {
+	  enable = true;
+	  config = {
+		  theme = "gruvbox-dark";
+	  };
+  };
 
 	programs.eza = {
 		enable = true;
@@ -149,6 +151,7 @@ config = {
 	  shellAliases = {
 		lz="lazygit";
 		nf="fastfetch";
+		cat="bat";
 		};
 	  oh-my-zsh = {
 		  enable = true;
@@ -170,6 +173,30 @@ config = {
 		  '';
 	  };
   };
+
+  programs.kitty = {
+		enable = true;
+		font.name = "VictorMono Nerd Font";
+		theme = "Gruvbox Dark Hard";
+		keybindings = {
+			"ctrl+shift+/" = "launch --location=hsplit";
+			"ctrl+shift+\\" = "launch --location=hsplit";
+			"ctrl+q" = "close";
+			};
+			extraConfig =  ''
+background #141617
+term xterm-256color
+'';
+		settings = {
+			background_opacity = "0.90";
+			hide_window_decorations = "yes";
+			enable_layouts = "splits";
+			cursor_shape = "block";
+			cursor_blink_interval= 0;
+			scrollback_lines= 2000;
+			dynamic_background_opacity=  "yes";
+			};
+	};
 
   programs.neovim = {
 		enable = true;
