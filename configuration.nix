@@ -124,7 +124,8 @@
 	ripgrep
 			#cargo
 			#glibc
-			#swift
+	swift
+	sourcekit-lsp
 			#swiften
 			#swiftPackages.swift-unwrapped
 			#swiftPackages.swiftpm

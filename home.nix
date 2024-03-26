@@ -34,7 +34,7 @@
 	nodejs
 	jdk17 # jdk
 	cargo # rust package manager
-	sourcekit-lsp # swift development
+	# sourcekit-lsp # swift development
 
 	lazygit
 	#kitty
