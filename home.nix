@@ -34,6 +34,8 @@
 	nodejs
 	jdk17 # jdk
 	cargo # rust package manager
+  lua5_4_compat
+  python3
 	# sourcekit-lsp # swift development
 
 	lazygit
@@ -41,6 +43,7 @@
 	qbittorrent
 	vlc
 	kdePackages.kdeconnect-kde
+	kdePackages.plasma-browser-integration
 	google-chrome
 	tree-sitter
 
@@ -158,19 +161,19 @@
 		  plugins = [ "git" "colored-man-pages" "zoxide" ];
 		  theme = "simple";
 		  extraConfig = ''
-				# this function helps me to attach to an existing tmux session
-				if [ -z "$TMUX" ]; then
-					attach_session=$(tmux 2> /dev/null ls -F \
-						'#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
-						awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
+# this function helps me to attach to an existing tmux session
+if [ -z "$TMUX" ]; then
+  attach_session=$(tmux 2> /dev/null ls -F \
+    '#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
+    awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
 
-					if [ -n "$attach_session" ]; then
-						tmux attach -t "$attach_session"
-					else
-						tmux
-					fi
-				fi
-		  '';
+  if [ -n "$attach_session" ]; then
+    tmux attach -t "$attach_session"
+  else
+    tmux
+  fi
+fi
+'';
 	  };
   };
 
