@@ -184,7 +184,6 @@ fi
 		keybindings = {
 			"ctrl+shift+/" = "launch --location=hsplit";
 			"ctrl+shift+\\" = "launch --location=hsplit";
-			"ctrl+q" = "close";
 			};
 			extraConfig =  ''
 background #141617
