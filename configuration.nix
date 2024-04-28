@@ -57,10 +57,10 @@ package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 	};
 
 	services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
 
 	services.xserver = {
 		enable = true;
-		displayManager.sddm.enable = true;
 		xkb.layout = "us";
 		xkb.variant = "";
 	};
@@ -89,12 +89,12 @@ package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 	shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
-    #  thunderbird
     ];
   };
 
 # Allow unfree software
   nixpkgs.config.allowUnfree = true;
+  #allowUnfree = true;
 	fonts.packages = with pkgs; [
 		(nerdfonts.override { fonts = [ "VictorMono" ]; })
 	];
@@ -127,24 +127,16 @@ package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     unzip
     wget
     curl
-    make
+    gnumake
   networkmanagerapplet
 	wl-clipboard # wayland clipboard
+  waybar
 	sshfs # kdeconnect ssh fuse filesystem
 	htop # system monitor
 	tmux # terminal multiplexer
 	gcc # c compiler
-	zsh # z shell
 	fd
 	ripgrep
-			#cargo
-			#glibc
-	swift
-	sourcekit-lsp
-			#swiften
-			#swiftPackages.swift-unwrapped
-			#swiftPackages.swiftpm
-			#swiftPackages.xcbuild
   ];
   # Set the default editor to nvim
   environment.variables.EDITOR = "nvim";

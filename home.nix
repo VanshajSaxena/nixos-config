@@ -34,12 +34,10 @@
 	nodejs
 	jdk17 # jdk
 	cargo # rust package manager
-  lua5_4_compat
+  luajit
   python3
-	# sourcekit-lsp # swift development
 
 	lazygit
-	#kitty
 	qbittorrent
 	vlc
 	kdePackages.kdeconnect-kde
@@ -47,11 +45,7 @@
 	google-chrome
 	tree-sitter
 
-	#btop # system monitor
-	oh-my-zsh # z shell dressing
 	zoxide # better cd command
-	bat # better cat command
-	eza # modern ls
 	fastfetch
     #neofetch
     #nnn # terminal file manager
@@ -83,6 +77,7 @@
     file
     #which
     tree
+    tig
     #gnused
     #gnutar
     #gawk
@@ -183,7 +178,8 @@ fi
 		theme = "Gruvbox Dark Hard";
 		keybindings = {
 			"ctrl+shift+/" = "launch --location=hsplit";
-			"ctrl+shift+\\" = "launch --location=hsplit";
+			"ctrl+shift+\\" = "launch --location=vsplit";
+      "ctrl+q" = "close";
 			};
 			extraConfig =  ''
 background #141617
@@ -197,6 +193,7 @@ term xterm-256color
 			cursor_blink_interval= 0;
 			scrollback_lines= 2000;
 			dynamic_background_opacity=  "yes";
+      confirm_os_window_close= 0;
 			};
 	};
 
