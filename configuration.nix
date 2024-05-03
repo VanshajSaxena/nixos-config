@@ -38,7 +38,7 @@ package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
 	networking.hostName = "VSENVY"; # Define your hostname.
 
-		networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
 
 	time.timeZone = "Asia/Kolkata";
 
@@ -146,6 +146,20 @@ package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 # Add any missing dynamic libraries for unpackaged 
 # programs here, NOT in environment.systemPackages
 	];
-system.stateVersion = "23.11"; # Did you read the comment?
 
+ # Perform garbage collection weekly to maintain low disk usage
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 3w";
+  };
+
+  # Optimize storage
+  # You can also manually optimize the store via:
+  #    nix-store --optimise
+  # Refer to the following link for more details:
+  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+  nix.settings.auto-optimise-store = true;
+
+system.stateVersion = "23.11"; # Did you read the comment?
 }
