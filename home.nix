@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs-unstable, pkgs-stable, ... }:
 
 {
   # TODO please change the username & home directory to your own
@@ -27,26 +27,26 @@
   # };
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
+  home.packages = with pkgs-unstable; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
-	nodejs
-	jdk17 # jdk
-	cargo # rust package manager
-  luajit
-  python3
+    nodejs
+    jdk17 # jdk
+    cargo # rust package manager
+    luajit
+    python3
 
-	lazygit
-	qbittorrent
-	vlc
-	kdePackages.kdeconnect-kde
-	kdePackages.plasma-browser-integration
-	google-chrome
-	tree-sitter
+    lazygit
+    qbittorrent
+    vlc
+    #	kdePackages.kdeconnect-kde
+    #kdePackages.plasma-browser-integration
+    google-chrome
+    tree-sitter
 
-	zoxide # better cd command
-	fastfetch
+    zoxide # better cd command
+    fastfetch
     #neofetch
     #nnn # terminal file manager
 
@@ -119,88 +119,88 @@
   };
 
   programs.bat = {
-	  enable = true;
-	  config = {
-		  theme = "gruvbox-dark";
-	  };
+    enable = true;
+    config = {
+      theme = "gruvbox-dark";
+    };
   };
 
-	programs.eza = {
-		enable = true;
-		git = true;
-		icons = true;
-	};
+  programs.eza = {
+    enable = true;
+    git = true;
+    icons = true;
+  };
 
   programs.btop = {
-	  enable = true;
-	  settings = {
-		  color_theme = "gruvbox_material_dark";
-		  theme_background = false;
-		  truecolor = true;
-		  vim_keys = true;
-		  rounded_corners = true;
-		  update_ms = 100;
-		  selected_battery = "BAT1";
-	  };
+    enable = true;
+    settings = {
+      color_theme = "gruvbox_material_dark";
+      theme_background = false;
+      truecolor = true;
+      vim_keys = true;
+      rounded_corners = true;
+      update_ms = 100;
+      selected_battery = "BAT1";
+    };
   };
 
   programs.zsh = {
-	  enable = true;
-	  shellAliases = {
-		lz="lazygit";
-		nf="fastfetch";
-		cat="bat";
-		};
-	  oh-my-zsh = {
-		  enable = true;
-		  plugins = [ "git" "colored-man-pages" "zoxide" ];
-		  theme = "simple";
-		  extraConfig = ''
-# this function helps me to attach to an existing tmux session
-if [ -z "$TMUX" ]; then
-  attach_session=$(tmux 2> /dev/null ls -F \
-    '#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
-    awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
+    enable = true;
+    shellAliases = {
+      lz = "lazygit";
+      nf = "fastfetch";
+      cat = "bat";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "colored-man-pages" "zoxide" ];
+      theme = "simple";
+      extraConfig = ''
+        # this function helps me to attach to an existing tmux session
+        if [ -z "$TMUX" ]; then
+          attach_session=$(tmux 2> /dev/null ls -F \
+            '#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
+            awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
 
-  if [ -n "$attach_session" ]; then
-    tmux attach -t "$attach_session"
-  else
-    tmux
-  fi
-fi
-'';
-	  };
+          if [ -n "$attach_session" ]; then
+            tmux attach -t "$attach_session"
+          else
+            tmux
+          fi
+        fi
+      '';
+    };
   };
 
   programs.kitty = {
-		enable = true;
-		font.name = "VictorMono Nerd Font";
-		theme = "Gruvbox Dark Hard";
-		keybindings = {
-			"ctrl+shift+/" = "launch --location=hsplit";
-			"ctrl+shift+\\" = "launch --location=vsplit";
+    enable = true;
+    font.name = "VictorMono Nerd Font";
+    theme = "Gruvbox Dark Hard";
+    keybindings = {
+      "ctrl+shift+/" = "launch --location=hsplit";
+      "ctrl+shift+\\" = "launch --location=vsplit";
       "ctrl+q" = "close";
-			};
-			extraConfig =  ''
-background #141617
-term xterm-256color
-'';
-		settings = {
-			background_opacity = "0.90";
-			hide_window_decorations = "yes";
-			enable_layouts = "splits";
-			cursor_shape = "block";
-			cursor_blink_interval= 0;
-			scrollback_lines= 2000;
-			dynamic_background_opacity=  "yes";
-      confirm_os_window_close= 0;
-			};
-	};
+    };
+    extraConfig = ''
+      background #141617
+      term xterm-256color
+    '';
+    settings = {
+      background_opacity = "0.90";
+      hide_window_decorations = "yes";
+      enable_layouts = "splits";
+      cursor_shape = "block";
+      cursor_blink_interval = 0;
+      scrollback_lines = 2000;
+      dynamic_background_opacity = "yes";
+      confirm_os_window_close = 0;
+    };
+  };
 
   programs.neovim = {
-		enable = true;
-		vimAlias = true;
-};
+    enable = true;
+    vimAlias = true;
+  };
 
   # starship - an customizable prompt for any shell
   # programs.starship = {
