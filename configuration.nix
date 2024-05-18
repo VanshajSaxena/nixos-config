@@ -128,6 +128,7 @@
     networkmanagerapplet
     wl-clipboard # wayland clipboard
     waybar
+    tldr
     sshfs # kdeconnect ssh fuse filesystem
     htop # system monitor
     tmux # terminal multiplexer

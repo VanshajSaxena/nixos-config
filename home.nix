@@ -40,8 +40,8 @@
     lazygit
     qbittorrent
     vlc
-    #	kdePackages.kdeconnect-kde
-    #kdePackages.plasma-browser-integration
+    kdePackages.kdeconnect-kde
+    kdePackages.plasma-browser-integration
     google-chrome
     tree-sitter
 
@@ -78,6 +78,7 @@
     #which
     tree
     tig
+    grimblast
     #gnused
     #gnutar
     #gawk

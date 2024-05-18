@@ -6,6 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
+    xremap-flake.url = "github:xremap/nix-flake";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       # The `follows` keyword in inputs is used for inheritance.
@@ -16,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }: {
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-unstable, home-manager, xremap-flake, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.VSENVY = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
@@ -34,6 +35,15 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./configuration.nix
+        xremap-flake.nixosModules.default
+        {
+          services.xremap.config.modmap = [{
+            name = "Global";
+            remap = { "CapsLock" = "Esc"; };
+            remap = { "RightAlt" = "RightCtrl"; };
+          }];
+        }
+
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
