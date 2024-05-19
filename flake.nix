@@ -17,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-unstable, home-manager, xremap-flake, ... }: {
+  outputs = { nixpkgs, nixpkgs-stable, nixpkgs-unstable, home-manager, xremap-flake, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.VSENVY = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
@@ -26,10 +26,10 @@
           inherit system;
           config.allowUnfree = true;
         };
-        nixos-unstable = import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        #nixos-unstable = import nixpkgs-unstable {
+        #inherit system;
+        #config.allowUnfree = true;
+        #};
       };
       modules = [
         # Import the previous configuration.nix we used,
@@ -53,10 +53,10 @@
           home-manager.users.vanshaj = import ./home.nix;
 
           home-manager.extraSpecialArgs = {
-            pkgs-stable = import nixpkgs-stable {
-              inherit system;
-              config.allowUnfree = true;
-            };
+            #pkgs-stable = import nixpkgs-stable {
+            #inherit system;
+            #config.allowUnfree = true;
+            #};
             pkgs-unstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;

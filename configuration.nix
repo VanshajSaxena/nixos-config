@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ inputs, pkgs, nixos-stable, ... }:
+{ nixos-stable, ... }:
 
 {
   imports =
@@ -13,22 +13,11 @@
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Hyprland Cachix
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
-
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-  };
-
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 7;
   boot.loader.efi.canTouchEfiVariables = true;
+
   # mount nvme0n1p4 to /mnt/data
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/926C7F156C7EF2F9";
@@ -42,22 +31,31 @@
 
   time.timeZone = "Asia/Kolkata";
 
-  i18n.defaultLocale = "en_IN";
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IN";
-    LC_IDENTIFICATION = "en_IN";
-    LC_MEASUREMENT = "en_IN";
-    LC_MONETARY = "en_IN";
-    LC_NAME = "en_IN";
-    LC_NUMERIC = "en_IN";
-    LC_PAPER = "en_IN";
-    LC_TELEPHONE = "en_IN";
-    LC_TIME = "en_IN";
+  #  i18n.extraLocaleSettings = {
+  #    LC_ADDRESS = "en_IN";
+  #    LC_IDENTIFICATION = "en_IN";
+  #    LC_MEASUREMENT = "en_IN";
+  #    LC_MONETARY = "en_IN";
+  #    LC_NAME = "en_IN";
+  #    LC_NUMERIC = "en_IN";
+  #    LC_PAPER = "en_IN";
+  #    LC_TELEPHONE = "en_IN";
+  #    LC_TIME = "en_IN";
+  #  };
+
+  # Add user 'vanshaj'
+  users.users.vanshaj = {
+    isNormalUser = true;
+    description = "Vanshaj Saxena";
+    extraGroups = [ "networkmanager" "wheel" "input" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM80MlQpoUkrQrYIfn5yE9SmxKsnVs4tt35SZ+T0bWjm vanshaj@VSENVY"
+    ];
+    shell = nixos-stable.zsh;
   };
-
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
 
   services.xserver = {
     enable = true;
@@ -66,32 +64,17 @@
   };
 
   services.printing.enable = true;
-
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  # Omit previous configuration settings...
 
-  # Add user 'vanshaj'
-  users.users.vanshaj = {
-    isNormalUser = true;
-    description = "Vanshaj Saxena";
-    extraGroups = [ "networkmanager" "wheel" ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM80MlQpoUkrQrYIfn5yE9SmxKsnVs4tt35SZ+T0bWjm vanshaj@VSENVY"
-    ];
-    shell = nixos-stable.zsh;
-  };
-
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
-  #allowUnfree = true;
   fonts.packages = with nixos-stable; [
     (nerdfonts.override { fonts = [ "VictorMono" ]; })
   ];
@@ -104,6 +87,7 @@
       { from = 1714; to = 1764; } # KDE Connect
     ];
   };
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
@@ -115,19 +99,43 @@
     openFirewall = true;
   };
 
-  # Omit the rest of the configuration...
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+
+  # Allow unfree software
+  nixpkgs.config.allowUnfree = true;
+
+  # Hyprland Cachix
+  nix.settings = {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
+
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+  };
+
+
+  # Set the default editor to nvim
+  environment.variables = {
+    EDITOR = "nvim";
+  };
+
+  programs.zsh.enable = true;
+
   environment.systemPackages = with nixos-stable; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
     git
-    neovim
+    vim
+    nvd # nix package version diff tool
     unzip
     wget
     curl
-    gnumake
     networkmanagerapplet
     wl-clipboard # wayland clipboard
-    waybar
+    killall
     tldr
     sshfs # kdeconnect ssh fuse filesystem
     htop # system monitor
@@ -136,11 +144,9 @@
     fd
     ripgrep
   ];
-  # Set the default editor to nvim
-  environment.variables.EDITOR = "nvim";
-  programs.zsh.enable = true;
+
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
+  programs.nix-ld.libraries = with nixos-stable; [
     # Add any missing dynamic libraries for unpackaged 
     # programs here, NOT in environment.systemPackages
   ];
@@ -149,12 +155,9 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 3w";
+    options = "--delete-older-than 2w";
   };
 
-  # Optimize storage
-  # You can also manually optimize the store via:
-  #    nix-store --optimise
   # Refer to the following link for more details:
   # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
   nix.settings.auto-optimise-store = true;

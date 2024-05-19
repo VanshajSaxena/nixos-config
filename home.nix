@@ -50,6 +50,10 @@
     #neofetch
     #nnn # terminal file manager
 
+    # hyprland
+    waybar
+    wofi
+
     # archives
     #zip
     #xz
