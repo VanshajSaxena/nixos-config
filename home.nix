@@ -83,6 +83,7 @@
     tree
     tig
     grimblast
+    gnumake
     #gnused
     #gnutar
     #gawk
@@ -90,7 +91,7 @@
     #gnupg
 
     # nix related
-    #
+    nix-tree
     # it provides the command `nom` works just like `nix`
     # with more details log output
     #nix-output-monitor
@@ -155,6 +156,7 @@
       lz = "lazygit";
       nf = "fastfetch";
       cat = "bat";
+      nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
     };
     oh-my-zsh = {
       enable = true;

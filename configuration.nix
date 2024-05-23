@@ -31,20 +31,19 @@
 
   time.timeZone = "Asia/Kolkata";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
+  i18n.defaultLocale = "en_IN";
 
-  #  i18n.extraLocaleSettings = {
-  #    LC_ADDRESS = "en_IN";
-  #    LC_IDENTIFICATION = "en_IN";
-  #    LC_MEASUREMENT = "en_IN";
-  #    LC_MONETARY = "en_IN";
-  #    LC_NAME = "en_IN";
-  #    LC_NUMERIC = "en_IN";
-  #    LC_PAPER = "en_IN";
-  #    LC_TELEPHONE = "en_IN";
-  #    LC_TIME = "en_IN";
-  #  };
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_IN";
+    LC_IDENTIFICATION = "en_IN";
+    LC_MEASUREMENT = "en_IN";
+    LC_MONETARY = "en_IN";
+    LC_NAME = "en_IN";
+    LC_NUMERIC = "en_IN";
+    LC_PAPER = "en_IN";
+    LC_TELEPHONE = "en_IN";
+    LC_TIME = "en_IN";
+  };
 
   # Add user 'vanshaj'
   users.users.vanshaj = {
@@ -100,7 +99,9 @@
   };
 
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.enable = true;
+  #services.xserver.displayManager.sddm.wayland.enable = true;
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
@@ -155,7 +156,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 2w";
+    options = "--delete-older-than 1w";
   };
 
   # Refer to the following link for more details:

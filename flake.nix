@@ -19,7 +19,7 @@
 
   outputs = { nixpkgs, nixpkgs-stable, nixpkgs-unstable, home-manager, xremap-flake, ... }: {
     # Please replace my-nixos with your hostname
-    nixosConfigurations.VSENVY = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations.VSENVY = nixpkgs-unstable.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
         nixos-stable = import nixpkgs-stable {
