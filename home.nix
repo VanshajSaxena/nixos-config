@@ -1,4 +1,4 @@
-{ pkgs-unstable, pkgs-stable, ... }:
+{ pkgs-unstable, ... }:
 
 {
   # TODO please change the username & home directory to your own
@@ -30,20 +30,19 @@
   home.packages = with pkgs-unstable; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
-
     nodejs
     jdk17 # jdk
-    cargo # rust package manager
+    # cargo # rust package manager
     luajit
-    python3
+    # python3
 
     lazygit
     qbittorrent
     vlc
-    kdePackages.kdeconnect-kde
-    kdePackages.plasma-browser-integration
-    google-chrome
-    tree-sitter
+    # kdePackages.kdeconnect-kde
+    # kdePackages.plasma-browser-integration
+    # google-chrome
+    # tree-sitter
 
     zoxide # better cd command
     fastfetch
@@ -51,8 +50,8 @@
     #nnn # terminal file manager
 
     # hyprland
-    waybar
-    wofi
+    # waybar
+    # wofi
 
     # archives
     #zip
@@ -60,7 +59,8 @@
     #p7zip
 
     # utils
-    #ripgrep # recursively searches directories for a regex pattern
+    ripgrep # recursively searches directories for a regex pattern
+    fd # search files
     #jq # A lightweight and flexible command-line JSON processor
     #yq-go # yaml processor https://github.com/mikefarah/yq
     #eza # A modern replacement for ‘ls’
@@ -82,7 +82,7 @@
     #which
     tree
     tig
-    grimblast
+    # grimblast
     gnumake
     #gnused
     #gnutar
@@ -91,7 +91,7 @@
     #gnupg
 
     # nix related
-    nix-tree
+    # nix-tree
     # it provides the command `nom` works just like `nix`
     # with more details log output
     #nix-output-monitor
@@ -100,7 +100,7 @@
     #hugo # static site generator
     #glow # markdown previewer in terminal
 
-    #btop  # replacement of htop/nmon
+    btop  # replacement of htop/nmon
     #iotop # io monitoring
     #iftop # network monitoring
 
@@ -179,9 +179,73 @@
     };
   };
 
+  programs.tmux = {
+  enable = true;
+  baseIndex = 1;
+  escapeTime = 10;
+  mouse = true;
+  keyMode = "vi";
+  prefix = "C-a";
+  historyLimit = 10000;
+  extraConfig = ''
+  # Install tpm:
+  # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+  set -g @plugin 'tmux-plugins/tpm'
+  set -g @plugin 'lawabidingcactus/tmux-gruvbox-truecolor'
+
+  set -g repeat-time 800
+
+  # vi-movements within tmux panes
+  bind-key h select-pane -L
+  bind-key j select-pane -D
+  bind-key k select-pane -U
+  bind-key l select-pane -R
+
+  # resize pane 
+  bind-key -r -T prefix C-h resize-pane -L
+  bind-key -r -T prefix C-j resize-pane -D
+  bind-key -r -T prefix C-k resize-pane -U
+  bind-key -r -T prefix C-l resize-pane -R
+
+  set -g default-terminal "screen-256color"
+  set -ga terminal-overrides ",*256col*:Tc"
+  set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+  set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
+  # 30% v-split 
+  bind-key E split-window -h -l 38% -c "#{pane_current_path}"
+  bind-key R run-shell 'tmux neww'
+
+  bind-key c new-window -c "#{pane_current_path}"
+
+  bind-key A split-window -v -c "#{pane_current_path}"
+  bind-key a split-window -h -c "#{pane_current_path}"
+
+  bind-key b break-pane -P -d
+  bind-key v copy-mode -e -u
+
+  set -g automatic-rename on
+  set -g renumber-windows on
+  bind -r g display-popup -d '#{pane_current_path}' -w80% -h80% -E lazygit
+  bind -r b display-popup -d '#{pane_current_path}' -w80% -h80% -E btop
+  bind -r h display-popup -d '#{pane_current_path}' -w80% -h80% -E htop
+  bind -r r display-popup -d '#{pane_current_path}' -w80% -h80% -E ranger
+  bind -r > display-popup -d '#{pane_current_path}' -w80% -h80% -E 
+  bind -r e kill-pane -a
+
+  # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+  run '~/.tmux/plugins/tpm/tpm'
+  '';
+  plugins = with pkgs-unstable; [ tmuxPlugins.cpu
+  {
+   plugin = tmuxPlugins.vim-tmux-navigator;
+  }
+  ];
+  };
+
   programs.kitty = {
     enable = true;
-    font.name = "VictorMono Nerd Font";
+    font.name = "JetBrainsMono Nerd Font";
     theme = "Gruvbox Dark Hard";
     keybindings = {
       "ctrl+shift+/" = "launch --location=hsplit";
@@ -260,7 +324,7 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -3,10 +3,9 @@
 
   inputs = {
     # NixOS official package source, using the nixos-23.11 branch here
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hyprland.url = "github:hyprwm/Hyprland";
-    xremap-flake.url = "github:xremap/nix-flake";
+    #xremap-flake.url = "github:xremap/nix-flake";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       # The `follows` keyword in inputs is used for inheritance.
@@ -17,9 +16,9 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, nixpkgs-unstable, home-manager, xremap-flake, ... }: {
+  outputs = { nixpkgs, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }: {
     # Please replace my-nixos with your hostname
-    nixosConfigurations.VSENVY = nixpkgs-unstable.lib.nixosSystem rec {
+    nixosConfigurations.NIXOS = nixpkgs-unstable.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
         nixos-stable = import nixpkgs-stable {
@@ -35,22 +34,24 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./configuration.nix
-        xremap-flake.nixosModules.default
-        {
-          services.xremap.config.modmap = [{
-            name = "Global";
-            remap = { "CapsLock" = "Esc"; };
-            remap = { "RightAlt" = "RightCtrl"; };
-          }];
-        }
+
+        #xremap-flake.nixosModules.default
+        #{
+        #  services.xremap.config.modmap = [{
+        #    name = "Global";
+        #    remap = { "CapsLock" = "Esc"; };
+        #    remap = { "RightAlt" = "RightCtrl"; };
+        #  }];
+        #}
 
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # TODO replace ryan with your own username
+          # TODO uncomment later
           home-manager.users.vanshaj = import ./home.nix;
+	  home-manager.backupFileExtension = "backup";
 
           home-manager.extraSpecialArgs = {
             #pkgs-stable = import nixpkgs-stable {
@@ -67,3 +68,4 @@
     };
   };
 }
+
