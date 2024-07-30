@@ -34,7 +34,9 @@
     jdk17 # jdk
     # cargo # rust package manager
     luajit
-    # python3
+    python3
+
+    kdePackages.kdeconnect-kde
 
     lazygit
     qbittorrent
@@ -48,6 +50,7 @@
     fastfetch
     #neofetch
     #nnn # terminal file manager
+    webcamoid
 
     # hyprland
     # waybar
@@ -91,10 +94,10 @@
     #gnupg
 
     # nix related
-    # nix-tree
+    nix-tree
     # it provides the command `nom` works just like `nix`
     # with more details log output
-    #nix-output-monitor
+    nix-output-monitor
 
     # productivity
     #hugo # static site generator
@@ -156,6 +159,7 @@
       lz = "lazygit";
       nf = "fastfetch";
       cat = "bat";
+      lt = "ll --tree";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
     };
     oh-my-zsh = {
@@ -208,7 +212,7 @@
   bind-key -r -T prefix C-k resize-pane -U
   bind-key -r -T prefix C-l resize-pane -R
 
-  set -g default-terminal "screen-256color"
+  set -g default-terminal "tmux-256color"
   set -ga terminal-overrides ",*256col*:Tc"
   set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
   set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0

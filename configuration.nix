@@ -79,6 +79,11 @@
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+
+  # Bluetooth support
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -112,7 +117,9 @@
   ];
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox = {
+      enable = true;
+    };
   programs.zsh.enable = true;
 
   # Allow unfree packages
@@ -172,6 +179,15 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
