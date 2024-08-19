@@ -37,6 +37,8 @@
     python3
 
     kdePackages.kdeconnect-kde
+    #kdePackages.kmix
+    libsForQt5.kmix
 
     lazygit
     qbittorrent
@@ -250,6 +252,7 @@
   programs.kitty = {
     enable = true;
     font.name = "JetBrainsMono Nerd Font";
+    font.size = 14; # 12 being normal
     theme = "Gruvbox Dark Hard";
     keybindings = {
       "ctrl+shift+/" = "launch --location=hsplit";
