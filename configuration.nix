@@ -98,6 +98,13 @@
     #media-session.enable = true;
   };
 
+services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
+  "monitor.bluez.properties" = {
+      "bluez5.hw-volume" = [ "hfp_hf" "hsp_hs" "a2dp_sink" "hsp_ag" "hfp_ag" "a2dp_source"];
+      "bluez5.enable-hw-volume" = true;
+  };
+};
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -130,6 +137,7 @@
   environment.systemPackages = with nixos-stable; [
    git
    vim # Do not forget to add an editor to edit configuration.nix!
+   # icu # unicode and globalization support library
    tmux
    gcc
    wl-clipboard

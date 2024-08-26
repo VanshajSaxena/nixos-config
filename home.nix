@@ -43,6 +43,7 @@
     lazygit
     qbittorrent
     vlc
+    # deskreen
     # kdePackages.kdeconnect-kde
     # kdePackages.plasma-browser-integration
     # google-chrome
@@ -53,6 +54,7 @@
     #neofetch
     #nnn # terminal file manager
     webcamoid
+    neovide
 
     # hyprland
     # waybar
@@ -97,6 +99,8 @@
 
     # nix related
     nix-tree
+    nixd
+    # nil
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
@@ -162,6 +166,7 @@
       nf = "fastfetch";
       cat = "bat";
       lt = "ll --tree";
+      ll = "ls -ahl";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
     };
     oh-my-zsh = {
@@ -252,7 +257,7 @@
   programs.kitty = {
     enable = true;
     font.name = "JetBrainsMono Nerd Font";
-    font.size = 14; # 12 being normal
+    font.size = 12; # 12 being normal
     theme = "Gruvbox Dark Hard";
     keybindings = {
       "ctrl+shift+/" = "launch --location=hsplit";
