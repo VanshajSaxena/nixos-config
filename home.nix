@@ -37,8 +37,8 @@
     python3
 
     kdePackages.kdeconnect-kde
-    #kdePackages.kmix
-    libsForQt5.kmix
+    # kdePackages.kmix
+    # libsForQt5.kmix
 
     lazygit
     qbittorrent
@@ -48,6 +48,7 @@
     # kdePackages.plasma-browser-integration
     # google-chrome
     # tree-sitter
+    pinta
 
     zoxide # better cd command
     fastfetch
