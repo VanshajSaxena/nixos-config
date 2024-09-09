@@ -35,8 +35,12 @@
     # cargo # rust package manager
     luajit
     python3
-
+# kde calender and contacts suite
+    kdePackages.merkuro 
     kdePackages.kdeconnect-kde
+    gimp
+    gimpPlugins.gap
+    ffmpeg_7
     # kdePackages.kmix
     # libsForQt5.kmix
 
@@ -110,9 +114,10 @@
     #hugo # static site generator
     #glow # markdown previewer in terminal
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     #iotop # io monitoring
     #iftop # network monitoring
+    dust # du alternative
 
     # system call monitoring
     #strace # system call monitoring

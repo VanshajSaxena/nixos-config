@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, nixos-stable, ... }:
+{ nixos-stable, ... }:
 
 {
   imports =
@@ -113,9 +113,9 @@ services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
     isNormalUser = true;
     description = "Vanshaj Saxena";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with nixos-stable; [
-    #  thunderbird
-    ];
+    # packages = with nixos-stable; [
+    # #  thunderbird
+    # ];
     shell = nixos-stable.zsh;
   };
 
@@ -149,14 +149,15 @@ services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
   # Environment variables
   environment.variables = {
    EDITOR = "nvim";
+   PAGER = "bat";
   };
 
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with nixos-stable; [
-    # Add any missing dynamic libraries for unpackaged 
-    # programs here, NOT in environment.systemPackages
-  ];
+  # programs.nix-ld.libraries = with nixos-stable; [
+  #   # Add any missing dynamic libraries for unpackaged 
+  #   # programs here, NOT in environment.systemPackages
+  # ];
 
   # Perform garbage collection weekly to maintain low disk usage
   nix.gc = {
