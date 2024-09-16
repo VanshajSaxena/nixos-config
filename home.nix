@@ -43,6 +43,7 @@
     ffmpeg_7
     # kdePackages.kmix
     # libsForQt5.kmix
+    hugo # static site engine
 
     lazygit
     qbittorrent
@@ -137,6 +138,11 @@
     enable = true;
     userName = "Vanshaj Saxena";
     userEmail = "vs110405@outlook.com";
+    extraConfig = {
+        init = {
+            defaultBranch = "master";
+          };
+      };
   };
 
   programs.bat = {
