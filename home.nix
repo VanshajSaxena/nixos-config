@@ -270,7 +270,7 @@
     enable = true;
     font.name = "JetBrainsMono Nerd Font";
     font.size = 12; # 12 being normal
-    theme = "Gruvbox Dark Hard";
+    themeFile = "gruvbox-dark-hard";
     keybindings = {
       "ctrl+shift+/" = "launch --location=hsplit";
       "ctrl+shift+\\" = "launch --location=vsplit";
