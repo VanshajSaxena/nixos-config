@@ -38,6 +38,7 @@
 # kde calender and contacts suite
     kdePackages.merkuro 
     kdePackages.kdeconnect-kde
+    kdePackages.kcalc
     gimp
     gimpPlugins.gap
     ffmpeg_7
