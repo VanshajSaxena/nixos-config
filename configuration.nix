@@ -28,8 +28,6 @@
 
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "ondemand";
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  services.logind.powerKey = "hibernate";
   # Hibernate settings end
 
   networking.hostName = "NIXOS"; # Define your hostname.
