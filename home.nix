@@ -32,7 +32,7 @@
     # feel free to add your own or remove some of them
     nodejs
     jdk17 # jdk
-    # cargo # rust package manager
+    cargo # rust package manager
     luajit
     python3
 # kde calender and contacts suite
@@ -48,10 +48,9 @@
 
     lazygit
     qbittorrent
+    tor-browser
     vlc
     # deskreen
-    # kdePackages.kdeconnect-kde
-    # kdePackages.plasma-browser-integration
     # google-chrome
     # tree-sitter
     pinta
@@ -93,6 +92,7 @@
     # misc
     #cowsay
     file
+    krusader # file manager
     #which
     tree
     tig
@@ -178,7 +178,7 @@
       lz = "lazygit";
       nf = "fastfetch";
       cat = "bat";
-      lt = "ll --tree";
+      lt = "ll --tree --ignore-glob '.git'";
       ll = "ls -ahl";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
     };
