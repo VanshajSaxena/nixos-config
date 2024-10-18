@@ -121,6 +121,9 @@ services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "VictorMono" ]; })
   ];
 
+  # Steam
+  programs.steam.enable = true;
+
   # Install firefox.
   programs.firefox = {
       enable = true;

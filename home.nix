@@ -34,6 +34,7 @@
     jdk17 # jdk
     cargo # rust package manager
     luajit
+    luajitPackages.luarocks # lua package manager
     python3
 # kde calender and contacts suite
     kdePackages.merkuro 
@@ -156,7 +157,7 @@
   programs.eza = {
     enable = true;
     git = true;
-    icons = true;
+    icons = "always";
   };
 
   programs.btop = {
