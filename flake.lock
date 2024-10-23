@@ -21,18 +21,6 @@
         "type": "github"
       }
     },
-    "nixpkgs": {
-      "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-nsNdSldaAyu6PE3YUA+YQLqUDJh+gRbBooMMekZJwvI=",
-        "path": "/nix/store/xnjw9gmfmpppdj6bxpw6cfkspc3h6xwl-source",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1729449015,
@@ -68,7 +56,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
