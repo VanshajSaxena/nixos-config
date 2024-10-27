@@ -8,7 +8,7 @@
     nodejs # copilot server
     jdk17 # java development kit
     cargo # rust package manager
-    luajit # JIT compiler for lua
+    lua51Packages.lua # lua_5.1
     luajitPackages.luarocks # lua package manager
     ghc # glasgo haskell compiler
     haskell-language-server # haskell LSP
@@ -191,7 +191,7 @@
       term xterm-256color
     '';
     settings = {
-      background_opacity = "0.90";
+      background_opacity = "0.80";
       hide_window_decorations = "yes";
       enable_layouts = "splits";
       cursor_shape = "block";
