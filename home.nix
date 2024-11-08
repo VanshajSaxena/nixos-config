@@ -42,6 +42,7 @@
 
     btop # replacement of htop/nmon
     dust # du alternative
+    hyperfine # benchmarking tool
   ];
 
   # basic configuration of git
@@ -52,6 +53,9 @@
     extraConfig = {
         init = {
             defaultBranch = "master";
+          };
+        diff = {
+            tool = "vimdiff";
           };
       };
   };
@@ -94,7 +98,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "zoxide" ];
+      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" ];
       theme = "simple";
       extraConfig = ''
         # this function helps me to attach to an existing tmux session
@@ -189,6 +193,7 @@
     extraConfig = ''
       background #141617
       term xterm-256color
+      include ./font.conf
     '';
     settings = {
       background_opacity = "0.80";
