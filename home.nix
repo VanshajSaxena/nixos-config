@@ -43,6 +43,9 @@
     btop # replacement of htop/nmon
     dust # du alternative
     hyperfine # benchmarking tool
+
+    dig # dns lookup
+    whois
   ];
 
   # basic configuration of git

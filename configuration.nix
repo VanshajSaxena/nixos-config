@@ -103,6 +103,9 @@
 
   programs.nix-ld.enable = true;
 
+  # Use ipv4 address family when connecting with ssh (git push/pull delay issue).
+  programs.ssh.extraConfig = "AddressFamily inet";
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
