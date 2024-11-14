@@ -43,6 +43,7 @@
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = [ nixos-stable.kdePackages.kate ];
 
   services.xserver = {
     xkb.layout = "us";
