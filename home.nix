@@ -28,7 +28,7 @@
     zoxide # better cd command
     fastfetch # neofetch successor
     webcamoid # webcam
-    neovide # neovim GUI
+    #neovide # neovim GUI
     ripgrep # better grep command
     fd # better find command
     file
@@ -186,7 +186,7 @@
   programs.kitty = {
     enable = true;
     font.name = "FiraCode Nerd Font";
-    font.size = 9; # 12 being normal
+    font.size = 12; # 12 being normal
     themeFile = "gruvbox-dark-hard";
     keybindings = {
       "ctrl+shift+/" = "launch --location=hsplit";
@@ -206,6 +206,9 @@
       cursor_blink_interval = 0;
       scrollback_lines = 2000;
       dynamic_background_opacity = "yes";
+      cursor_trail = 1;
+      cursor_trail_decay = "0.08 0.4";
+      cursor_trail_start_threshold = 1;
       confirm_os_window_close = 0;
     };
   };
