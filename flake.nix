@@ -1,5 +1,5 @@
 {
-  description = "My first NixOS flake";
+  description = "NixOS System Flake";
 
   inputs = {
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
