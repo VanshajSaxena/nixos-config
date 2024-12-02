@@ -16,11 +16,13 @@
     kdePackages.merkuro # calender
     kdePackages.kdeconnect-kde # kde-connect
     kdePackages.kcalc # calculator
+    # kdePackages.neochat # matrix client by KDE
     gimp # edit photos
     ffmpeg_7 # gif and videos
     hugo # static site engine
     lazygit # git TUI
     qbittorrent # torrent client
+    discord # voice, text and video chat
     tor-browser # tor network browser
     vlc # media player
     tree-sitter # syntax highlighter
@@ -28,7 +30,7 @@
     zoxide # better cd command
     fastfetch # neofetch successor
     webcamoid # webcam
-    #neovide # neovim GUI
+    neovide # neovim GUI
     ripgrep # better grep command
     fd # better find command
     file
@@ -96,7 +98,7 @@
       nf = "fastfetch";
       cat = "bat";
       lt = "ll --tree --ignore-glob '.git'";
-      ll = "ls -ahl";
+      ll = "l";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
     };
     oh-my-zsh = {
@@ -204,10 +206,10 @@
       enable_layouts = "splits";
       cursor_shape = "block";
       cursor_blink_interval = 0;
-      scrollback_lines = 2000;
+      scrollback_lines = 10000;
       dynamic_background_opacity = "yes";
       cursor_trail = 1;
-      cursor_trail_decay = "0.08 0.4";
+      cursor_trail_decay = "0.08 0.45";
       cursor_trail_start_threshold = 1;
       confirm_os_window_close = 0;
     };
