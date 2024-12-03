@@ -195,7 +195,11 @@
       "ctrl+shift+\\" = "launch --location=vsplit";
       "ctrl+q" = "close";
     };
+    shellIntegration.enableZshIntegration = true;
     extraConfig = ''
+      font_features FiraCodeNF-Reg +zero +ss03 +cv15 +cv25 +cv26 +cv30 +cv32
+      font_features FiraCodeNF-SemBd +zero +ss03 +cv15 +cv25 +cv26 +cv30 +cv32
+      font_features FiraCodeNF-Ret +zero +ss03 +cv15 +cv25 +cv26 +cv30 +cv32
       background #141617
       term xterm-256color
       include ./font.conf
