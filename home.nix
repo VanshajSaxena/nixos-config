@@ -103,7 +103,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" ];
+      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" "kitty" ];
       theme = "simple";
       extraConfig = ''
         # this function helps me to attach to an existing tmux session
@@ -197,9 +197,10 @@
     };
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
-      font_features FiraCodeNF-Reg +zero +ss03 +cv15 +cv25 +cv26 +cv30 +cv32
-      font_features FiraCodeNF-SemBd +zero +ss03 +cv15 +cv25 +cv26 +cv30 +cv32
-      font_features FiraCodeNF-Ret +zero +ss03 +cv15 +cv25 +cv26 +cv30 +cv32
+      https://github.com/tonsky/FiraCode?tab=readme-ov-file#whats-in-the-box
+      font_features FiraCodeNF-Reg +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
+      font_features FiraCodeNF-SemBd +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
+      font_features FiraCodeNF-Ret +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
       background #141617
       term xterm-256color
       include ./font.conf
