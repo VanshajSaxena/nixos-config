@@ -197,7 +197,7 @@
     };
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
-      https://github.com/tonsky/FiraCode?tab=readme-ov-file#whats-in-the-box
+      # https://github.com/tonsky/FiraCode?tab=readme-ov-file#whats-in-the-box
       font_features FiraCodeNF-Reg +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
       font_features FiraCodeNF-SemBd +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
       font_features FiraCodeNF-Ret +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
@@ -208,7 +208,7 @@
     settings = {
       background_opacity = "0.80";
       hide_window_decorations = "yes";
-      enable_layouts = "splits";
+      enabled_layouts = "splits";
       cursor_shape = "block";
       cursor_blink_interval = 0;
       scrollback_lines = 10000;
