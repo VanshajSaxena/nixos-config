@@ -33,6 +33,7 @@
     neovide # neovim GUI
     ripgrep # better grep command
     fd # better find command
+    fzf # fuzzy finder
     file
     krusader # file manager
     tree # show directory tree
@@ -103,7 +104,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" "kitty" ];
+      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" "kitty" "fzf" ];
       theme = "simple";
       extraConfig = ''
         # this function helps me to attach to an existing tmux session
