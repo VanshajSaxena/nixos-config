@@ -34,8 +34,12 @@
     ripgrep # better grep command
     fd # better find command
     fzf # fuzzy finder
+    chafa # terminal graphics
+    # ueberzugpp # terminal graphics # probably requires configuration dosn't work oftb.
+    # viu # teminal graphics
     file
     krusader # file manager
+    yazi # terminal file manager
     tree # show directory tree
     tig # git TUI
     gnumake # idr why its here, I needed it for some program to compile
