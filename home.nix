@@ -130,6 +130,7 @@
   enable = true;
   baseIndex = 1;
   escapeTime = 10;
+  focusEvents = true;
   mouse = true;
   keyMode = "vi";
   prefix = "C-a";
@@ -155,30 +156,32 @@
   bind-key -r -T prefix C-k resize-pane -U
   bind-key -r -T prefix C-l resize-pane -R
 
-  set -g default-terminal "tmux-256color"
-  set -ga terminal-overrides ",*256col*:Tc"
+  set -g default-terminal 'tmux-256color'
+  set -ga terminal-overrides ',*256col*:Tc'
   set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
   set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
   # 30% v-split 
-  bind-key E split-window -h -l 38% -c "#{pane_current_path}"
+  bind-key E split-window -h -l 38% -c '#{pane_current_path}'
   bind-key R run-shell 'tmux neww'
 
-  bind-key c new-window -c "#{pane_current_path}"
+  bind-key c new-window -c '#{pane_current_path}'
 
-  bind-key A split-window -v -c "#{pane_current_path}"
-  bind-key a split-window -h -c "#{pane_current_path}"
+  bind-key A split-window -v -c '#{pane_current_path}'
+  bind-key a split-window -h -c '#{pane_current_path}'
 
   bind-key b break-pane -P -d
-  bind-key v copy-mode -e -u
+  bind-key v copy-mode
+  # Use wl-copy for clipboard integration
+  bind-key -T copy-mode-vi y send-keys -X copy-pipe 'wl-copy'
 
   set -g automatic-rename on
   set -g renumber-windows on
-  bind -r g display-popup -d '#{pane_current_path}' -w80% -h80% -E lazygit
-  bind -r b display-popup -d '#{pane_current_path}' -w80% -h80% -E btop
-  bind -r h display-popup -d '#{pane_current_path}' -w80% -h80% -E htop
-  bind -r r display-popup -d '#{pane_current_path}' -w80% -h80% -E ranger
-  bind -r > display-popup -d '#{pane_current_path}' -w80% -h80% -E 
-  bind -r e kill-pane -a
+  bind-key -r g display-popup -d '#{pane_current_path}' -w80% -h80% -EB lazygit
+  bind-key -r b display-popup -d '#{pane_current_path}' -w80% -h80% -EB btop
+  bind-key -r h display-popup -d '#{pane_current_path}' -w80% -h80% -EB htop
+  bind-key -r y display-popup -d '#{pane_current_path}' -w80% -h80% -EB yazi
+  bind-key -r > display-popup -d '#{pane_current_path}' -w80% -h80% -EB
+  bind-key -r e kill-pane -a
 
   # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
   run '~/.tmux/plugins/tpm/tpm'
