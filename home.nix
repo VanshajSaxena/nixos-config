@@ -16,6 +16,7 @@
     kdePackages.merkuro # calender
     kdePackages.kdeconnect-kde # kde-connect
     kdePackages.kcalc # calculator
+    thunderbird
     # kdePackages.neochat # matrix client by KDE
     gimp # edit photos
     ffmpeg_7 # gif and videos
@@ -39,6 +40,7 @@
     # viu # teminal graphics
     file
     krusader # file manager
+    sioyek
     yazi # terminal file manager
     tree # show directory tree
     tig # git TUI
