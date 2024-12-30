@@ -29,13 +29,6 @@
       };
       modules = [
         ./configuration.nix
-        #{
-        #  services.xremap.config.modmap = [{
-        #    name = "Global";
-        #    remap = { "CapsLock" = "Esc"; };
-        #    remap = { "RightAlt" = "RightCtrl"; };
-        #  }];
-        #}
 
         home-manager.nixosModules.home-manager
         {
@@ -60,4 +53,3 @@
     };
   };
 }
-
