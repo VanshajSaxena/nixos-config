@@ -40,7 +40,6 @@
     # viu # teminal graphics
     file
     krusader # file manager
-    sioyek
     yazi # terminal file manager
     tree # show directory tree
     tig # git TUI
@@ -195,6 +194,19 @@
   ];
   };
 
+  programs.sioyek = {
+    enable = true;
+    bindings = {
+      "screen_down" = ["d" "<C-d>"];
+      "screen_up" = ["u" "<C-u>"];
+      "move_left" = "{";
+      "move_right" = "}";
+    };
+    config = {
+      "toggle_two_page_mode" = "<f2>";
+    };
+  };
+
   programs.kitty = {
     enable = true;
     font.name = "FiraCode Nerd Font";
@@ -224,7 +236,7 @@
       scrollback_lines = 10000;
       dynamic_background_opacity = "yes";
       cursor_trail = 1;
-      cursor_trail_decay = "0.08 0.45";
+      cursor_trail_decay = "0.15 0.45";
       cursor_trail_start_threshold = 1;
       confirm_os_window_close = 0;
     };
