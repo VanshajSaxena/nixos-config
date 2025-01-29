@@ -6,7 +6,8 @@
 
   home.packages = with pkgs-unstable; [
     nodejs # copilot server
-    jdk17 # java development kit
+    jdk # java development kit
+    gradle # java build system
     cargo # rust package manager
     lua51Packages.lua # lua_5.1
     luajitPackages.luarocks # lua package manager
@@ -24,6 +25,7 @@
     lazygit # git TUI
     qbittorrent # torrent client
     discord # voice, text and video chat
+    networkmanagerapplet # nm-applet
     tor-browser # tor network browser
     vlc # media player
     tree-sitter # syntax highlighter
@@ -54,6 +56,7 @@
 
     dig # dns lookup
     whois
+    ollama
   ];
 
   # basic configuration of git
@@ -109,7 +112,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" "kitty" "fzf" ];
+      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" "kitty" "fzf" "gradle" ];
       theme = "simple";
       extraConfig = ''
         # this function helps me to attach to an existing tmux session
