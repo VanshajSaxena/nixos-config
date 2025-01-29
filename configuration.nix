@@ -8,6 +8,11 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -40,6 +45,8 @@
   };
 
   services.xserver.enable = true;
+
+  programs.hyprland.enable = true;
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -75,8 +82,6 @@
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "VictorMono" ]; })
   ];
 
-  programs.steam.enable = false;
-
   programs.firefox = {
       enable = true;
   };
@@ -87,7 +92,7 @@
 
   environment.systemPackages = with nixos-stable; [
    git
-   vim # Do not forget to add an editor to edit configuration.nix!
+   neovim # Do not forget to add an editor to edit configuration.nix!
    tmux
    gcc
    wl-clipboard
