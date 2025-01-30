@@ -48,7 +48,8 @@
     gnumake # idr why its here, I needed it for some program to compile
     nix-tree # interactive browse dependency graphs of nix derivations
     nixd # nix LSP
-    nix-output-monitor #
+    nixfmt-rfc-style # official nix formatter
+    nix-output-monitor
 
     btop # replacement of htop/nmon
     dust # du alternative
@@ -65,13 +66,13 @@
     userName = "Vanshaj Saxena";
     userEmail = "vs110405@outlook.com";
     extraConfig = {
-        init = {
-            defaultBranch = "master";
-          };
-        diff = {
-            tool = "vimdiff";
-          };
+      init = {
+        defaultBranch = "master";
       };
+      diff = {
+        tool = "vimdiff";
+      };
+    };
   };
 
   programs.bat = {
@@ -112,7 +113,15 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "zoxide" "ssh-agent" "kitty" "fzf" "gradle" ];
+      plugins = [
+        "git"
+        "colored-man-pages"
+        "zoxide"
+        "ssh-agent"
+        "kitty"
+        "fzf"
+        "gradle"
+      ];
       theme = "simple";
       extraConfig = ''
         # this function helps me to attach to an existing tmux session
@@ -131,77 +140,84 @@
   };
 
   programs.tmux = {
-  enable = true;
-  baseIndex = 1;
-  escapeTime = 10;
-  focusEvents = true;
-  mouse = true;
-  keyMode = "vi";
-  prefix = "C-a";
-  historyLimit = 10000;
-  extraConfig = ''
-  # Install tpm:
-  # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    enable = true;
+    baseIndex = 1;
+    escapeTime = 10;
+    focusEvents = true;
+    mouse = true;
+    keyMode = "vi";
+    prefix = "C-a";
+    historyLimit = 10000;
+    extraConfig = ''
+      # Install tpm:
+      # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-  set -g @plugin 'tmux-plugins/tpm'
-  set -g @plugin 'lawabidingcactus/tmux-gruvbox-truecolor'
+      set -g @plugin 'tmux-plugins/tpm'
+      set -g @plugin 'lawabidingcactus/tmux-gruvbox-truecolor'
 
-  set -g repeat-time 800
+      set -g repeat-time 800
 
-  # vi-movements within tmux panes
-  bind-key h select-pane -L
-  bind-key j select-pane -D
-  bind-key k select-pane -U
-  bind-key l select-pane -R
+      # vi-movements within tmux panes
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
 
-  # resize pane 
-  bind-key -r -T prefix C-h resize-pane -L
-  bind-key -r -T prefix C-j resize-pane -D
-  bind-key -r -T prefix C-k resize-pane -U
-  bind-key -r -T prefix C-l resize-pane -R
+      # resize pane 
+      bind-key -r -T prefix C-h resize-pane -L
+      bind-key -r -T prefix C-j resize-pane -D
+      bind-key -r -T prefix C-k resize-pane -U
+      bind-key -r -T prefix C-l resize-pane -R
 
-  set -g default-terminal 'tmux-256color'
-  set -ga terminal-overrides ',*256col*:Tc'
-  set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
-  set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
-  # 30% v-split 
-  bind-key E split-window -h -l 38% -c '#{pane_current_path}'
-  bind-key R run-shell 'tmux neww'
+      set -g default-terminal 'tmux-256color'
+      set -ga terminal-overrides ',*256col*:Tc'
+      set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+      set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
+      # 30% v-split 
+      bind-key E split-window -h -l 38% -c '#{pane_current_path}'
+      bind-key R run-shell 'tmux neww'
 
-  bind-key c new-window -c '#{pane_current_path}'
+      bind-key c new-window -c '#{pane_current_path}'
 
-  bind-key A split-window -v -c '#{pane_current_path}'
-  bind-key a split-window -h -c '#{pane_current_path}'
+      bind-key A split-window -v -c '#{pane_current_path}'
+      bind-key a split-window -h -c '#{pane_current_path}'
 
-  bind-key b break-pane -P -d
-  bind-key v copy-mode
-  # Use wl-copy for clipboard integration
-  bind-key -T copy-mode-vi y send-keys -X copy-pipe 'wl-copy'
+      bind-key b break-pane -P -d
+      bind-key v copy-mode
+      # Use wl-copy for clipboard integration
+      bind-key -T copy-mode-vi y send-keys -X copy-pipe 'wl-copy'
 
-  set -g automatic-rename on
-  set -g renumber-windows on
-  bind-key -r g display-popup -d '#{pane_current_path}' -w80% -h80% -EB lazygit
-  bind-key -r b display-popup -d '#{pane_current_path}' -w80% -h80% -EB btop
-  bind-key -r h display-popup -d '#{pane_current_path}' -w80% -h80% -EB htop
-  bind-key -r y display-popup -d '#{pane_current_path}' -w80% -h80% -EB yazi
-  bind-key -r > display-popup -d '#{pane_current_path}' -w80% -h80% -EB
-  bind-key -r e kill-pane -a
+      set -g automatic-rename on
+      set -g renumber-windows on
+      bind-key -r g display-popup -d '#{pane_current_path}' -w80% -h80% -EB lazygit
+      bind-key -r b display-popup -d '#{pane_current_path}' -w80% -h80% -EB btop
+      bind-key -r h display-popup -d '#{pane_current_path}' -w80% -h80% -EB htop
+      bind-key -r y display-popup -d '#{pane_current_path}' -w80% -h80% -EB yazi
+      bind-key -r > display-popup -d '#{pane_current_path}' -w80% -h80% -EB
+      bind-key -r e kill-pane -a
 
-  # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-  run '~/.tmux/plugins/tpm/tpm'
-  '';
-  plugins = with pkgs-unstable; [ tmuxPlugins.cpu
-  {
-   plugin = tmuxPlugins.vim-tmux-navigator;
-  }
-  ];
+      # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+      run '~/.tmux/plugins/tpm/tpm'
+    '';
+    plugins = with pkgs-unstable; [
+      tmuxPlugins.cpu
+      {
+        plugin = tmuxPlugins.vim-tmux-navigator;
+      }
+    ];
   };
 
   programs.sioyek = {
     enable = true;
     bindings = {
-      "screen_down" = ["d" "<C-d>"];
-      "screen_up" = ["u" "<C-u>"];
+      "screen_down" = [
+        "d"
+        "<C-d>"
+      ];
+      "screen_up" = [
+        "u"
+        "<C-u>"
+      ];
       "move_left" = "{";
       "move_right" = "}";
     };

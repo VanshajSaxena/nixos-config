@@ -1,24 +1,27 @@
 { nixos-stable, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   swapDevices = [
-  { device = "/dev/disk/by-uuid/addd79fc-3c3c-4562-9a97-b895abf8945e";
-  }
+    {
+      device = "/dev/disk/by-uuid/addd79fc-3c3c-4562-9a97-b895abf8945e";
+    }
   ];
 
   boot.resumeDevice = "/dev/disk/by-uuid/addd79fc-3c3c-4562-9a97-b895abf8945e";
@@ -74,16 +77,25 @@
   users.users.vanshaj = {
     isNormalUser = true;
     description = "Vanshaj Saxena";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = nixos-stable.zsh;
   };
 
-    fonts.packages = with nixos-stable; [
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "VictorMono" ]; })
+  fonts.packages = with nixos-stable; [
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "JetBrainsMono"
+        "VictorMono"
+      ];
+    })
   ];
 
   programs.firefox = {
-      enable = true;
+    enable = true;
   };
 
   programs.zsh.enable = true;
@@ -91,19 +103,19 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with nixos-stable; [
-   git
-   neovim # Do not forget to add an editor to edit configuration.nix!
-   tmux
-   gcc
-   wl-clipboard
-   wget
-   unzip
-   curl
+    git
+    neovim # Do not forget to add an editor to edit configuration.nix!
+    tmux
+    gcc
+    wl-clipboard
+    wget
+    unzip
+    curl
   ];
 
   environment.variables = {
-   EDITOR = "nvim";
-   PAGER = "bat";
+    EDITOR = "nvim";
+    PAGER = "bat";
   };
 
   programs.nix-ld.enable = true;
@@ -122,10 +134,16 @@
   networking.firewall = {
     enable = true;
     allowedTCPPortRanges = [
-      { from = 1714; to = 1764; } # KDE Connect
+      {
+        from = 1714;
+        to = 1764;
+      } # KDE Connect
     ];
     allowedUDPPortRanges = [
-      { from = 1714; to = 1764; } # KDE Connect
+      {
+        from = 1714;
+        to = 1764;
+      } # KDE Connect
     ];
   };
 
