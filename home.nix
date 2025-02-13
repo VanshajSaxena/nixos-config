@@ -60,6 +60,8 @@
     dig # dns lookup
     whois
     ollama
+    wineWowPackages.waylandFull # wine for windows programs
+    samba4Full
   ];
 
   # basic configuration of git
