@@ -114,6 +114,7 @@
       lt = "ll --tree --ignore-glob '.git'";
       ll = "l";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
+      leetcode = "nvim leetcode.nvim";
     };
     oh-my-zsh = {
       enable = true;
