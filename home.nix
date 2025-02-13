@@ -26,6 +26,7 @@
     qbittorrent # torrent client
     discord # voice, text and video chat
     networkmanagerapplet # nm-applet
+    xdotool # x11 automation tool
     tor-browser # tor network browser
     vlc # media player
     tree-sitter # syntax highlighter
