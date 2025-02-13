@@ -41,8 +41,9 @@
     chafa # terminal graphics
     # ueberzugpp # terminal graphics # probably requires configuration dosn't work oftb.
     # viu # teminal graphics
+    # ghostty
     file
-    krusader # file manager
+    # krusader # split file manager
     yazi # terminal file manager
     tree # show directory tree
     tig # git TUI
