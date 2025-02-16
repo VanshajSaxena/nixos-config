@@ -11,6 +11,7 @@
     cargo # rust package manager
     lua51Packages.lua # lua_5.1
     luajitPackages.luarocks # lua package manager
+    kdePackages.umbrello # UML GUI
     ghc # glasgo haskell compiler
     haskell-language-server # haskell LSP
     python3
@@ -239,16 +240,15 @@
     keybindings = {
       "ctrl+shift+/" = "launch --location=hsplit";
       "ctrl+shift+\\" = "launch --location=vsplit";
-      "ctrl+q" = "close";
     };
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
       # https://github.com/tonsky/FiraCode?tab=readme-ov-file#whats-in-the-box
-      font_features FiraCodeNF-Reg +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
-      font_features FiraCodeNF-SemBd +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
-      font_features FiraCodeNF-Ret +zero +ss03 +ss10 +cv15 +cv25 +cv26 +cv30 +cv32
+      font_features FiraCodeNF-Reg +zero +ss03 +ss04 +ss10 +cv16 +cv30
+      font_features FiraCodeNF-SemBd +zero +ss03 +ss04 +ss10 +cv16 +cv30
+      font_features FiraCodeNF-Ret +zero +ss03 +ss04 +ss10 +cv16 +cv30
       background #141617
-      term xterm-256color
+      # term xterm-256color # don't set the term variable
       include ./font.conf
     '';
     settings = {
