@@ -90,6 +90,7 @@
         "FiraCode"
         "JetBrainsMono"
         "VictorMono"
+        "Monaspace"
       ];
     })
   ];
