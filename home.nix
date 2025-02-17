@@ -1,4 +1,4 @@
-{ pkgs-unstable, ... }:
+{ pkgs-unstable, zen-browser, ... }:
 
 {
   home.username = "vanshaj";
@@ -63,6 +63,8 @@
     ollama
     wineWowPackages.waylandFull # wine for windows programs
     samba4Full
+
+    zen-browser.packages."x86_64-linux".twilight # artifacts are downloaded from this repository to guarantee reproducibility
   ];
 
   # basic configuration of git

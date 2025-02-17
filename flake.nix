@@ -12,6 +12,8 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    # temporary flake for zen-browser
+    zen-browser-flake.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs =
@@ -19,6 +21,7 @@
       nixpkgs-stable,
       nixpkgs-unstable,
       home-manager,
+      zen-browser-flake,
       ...
     }:
     {
@@ -46,6 +49,7 @@
             home-manager.backupFileExtension = "backup";
 
             home-manager.extraSpecialArgs = {
+              zen-browser = zen-browser-flake;
               #pkgs-stable = import nixpkgs-stable {
               #inherit system;
               #config.allowUnfree = true;
