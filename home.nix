@@ -63,6 +63,8 @@
     ollama
     wineWowPackages.waylandFull # wine for windows programs
     samba4Full
+    ghostscript # postscript interpreter (pdf previews)
+    tectonic-unwrapped # modern Tex engine
 
     zen-browser.packages."x86_64-linux".twilight # artifacts are downloaded from this repository to guarantee reproducibility
   ];
@@ -117,7 +119,7 @@
       lt = "ll --tree --ignore-glob '.git'";
       ll = "l";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
-      leetcode = "nvim leetcode.nvim";
+      leet = "nvim leetcode.nvim";
     };
     oh-my-zsh = {
       enable = true;
