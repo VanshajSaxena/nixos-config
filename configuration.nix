@@ -121,6 +121,7 @@
 
   environment.variables = {
     EDITOR = "nvim";
+    MANPAGER = "nvim +Man!";
     PAGER = "bat";
   };
 
