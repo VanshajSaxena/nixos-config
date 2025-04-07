@@ -67,6 +67,7 @@
     tectonic-unwrapped # modern Tex engine
 
     zen-browser.packages."x86_64-linux".twilight # artifacts are downloaded from this repository to guarantee reproducibility
+    zen-browser.packages."x86_64-linux".default # artifacts are downloaded from this repository to guarantee reproducibility
   ];
 
   # basic configuration of git
