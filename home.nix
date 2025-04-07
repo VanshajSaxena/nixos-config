@@ -10,6 +10,8 @@
     gradle # java build system
     maven # java build system
     cargo # rust package manager
+    postman # API Development Environment
+    openapi-generator-cli # generate API client/server code
     lua51Packages.lua # lua_5.1
     luajitPackages.luarocks # lua package manager
     # kdePackages.umbrello # UML GUI # now broken
