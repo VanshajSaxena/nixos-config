@@ -59,6 +59,7 @@
 
     btop # replacement of htop/nmon
     dust # du alternative
+    scc # code counter
     hyperfine # benchmarking tool
 
     dig # dns lookup
