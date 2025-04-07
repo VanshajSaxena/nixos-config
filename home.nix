@@ -8,6 +8,7 @@
     nodejs # copilot server
     jdk # java development kit
     gradle # java build system
+    maven # java build system
     cargo # rust package manager
     lua51Packages.lua # lua_5.1
     luajitPackages.luarocks # lua package manager
@@ -132,6 +133,7 @@
         "kitty"
         "fzf"
         "gradle"
+        "mvn"
       ];
       theme = "simple";
       extraConfig = ''
