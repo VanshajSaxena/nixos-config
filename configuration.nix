@@ -47,6 +47,11 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  services.mysql = {
+    enable = true;
+    package = nixos-stable.mysql84;
+  };
+
   services.xserver.enable = true;
 
   programs.hyprland.enable = true;
