@@ -14,7 +14,7 @@
     openapi-generator-cli # generate API client/server code
     lua51Packages.lua # lua_5.1
     luajitPackages.luarocks # lua package manager
-    # kdePackages.umbrello # UML GUI # now broken
+    libsForQt5.umbrello # UML GUI
     ghc # glasgo haskell compiler
     haskell-language-server # haskell LSP
     python3
