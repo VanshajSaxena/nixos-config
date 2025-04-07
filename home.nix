@@ -63,7 +63,7 @@
     hyperfine # benchmarking tool
 
     dig # dns lookup
-    whois
+    inetutils
     ollama
     wineWowPackages.waylandFull # wine for windows programs
     samba4Full
