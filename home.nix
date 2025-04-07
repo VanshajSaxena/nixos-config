@@ -124,6 +124,7 @@
       ll = "l";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
       leet = "nvim leetcode.nvim";
+      leetvide = "neovide -- leetcode.nvim";
     };
     oh-my-zsh = {
       enable = true;
@@ -137,7 +138,7 @@
         "gradle"
         "mvn"
       ];
-      theme = "simple";
+      theme = "gentoo";
       extraConfig = ''
         # this function helps me to attach to an existing tmux session
         if [ -z "$TMUX" ]; then
