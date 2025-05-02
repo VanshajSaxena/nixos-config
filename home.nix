@@ -71,6 +71,7 @@
     samba4Full
     ghostscript # postscript interpreter (pdf previews)
     tectonic # modern Tex engine
+    icu # unicode and globalization support library
 
     zen-browser.packages."x86_64-linux".default # browser
   ];
