@@ -123,8 +123,9 @@
       lz = "lazygit";
       nf = "fastfetch";
       cat = "bat";
-      lt = "ll --tree --ignore-glob '.git'";
       ll = "l";
+      lt = "exa --tree --ignore-glob '.git'";
+      lT = "ll --tree --ignore-glob '.git'";
       nix-show-usage = "nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree";
       leet = "nvim leetcode.nvim";
       leetvide = "neovide -- leetcode.nvim";
