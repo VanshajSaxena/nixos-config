@@ -56,6 +56,8 @@
     nixd # nix LSP
     nixfmt-rfc-style # official nix formatter
     nix-output-monitor
+    openssl # cryptographic library that implements the SSL and TLS protocols
+    httpie # HTTP cli tool thats human friendly
 
     btop # replacement of htop/nmon
     dust # du alternative
