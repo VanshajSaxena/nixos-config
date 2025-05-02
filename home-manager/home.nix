@@ -1,82 +1,82 @@
-{ pkgs-unstable, zen-browser, ... }:
+{ pkgs, zen-browser, ... }:
 
 {
   home.username = "vanshaj";
   home.homeDirectory = "/home/vanshaj";
 
-  home.packages = with pkgs-unstable; [
-    nodejs # copilot server
-    jdk # java development kit
-    gradle # java build system
-    maven # java build system
-    cargo # rust package manager
-    postman # API Development Environment
-    openapi-generator-cli # generate API client/server code
-    lua51Packages.lua # lua_5.1
-    luajitPackages.luarocks # lua package manager
-    libsForQt5.umbrello # UML GUI
-    ghc # glasgo haskell compiler
-    haskell-language-server # haskell LSP
-    python3
-    kdePackages.merkuro # calender
-    kdePackages.kdeconnect-kde # kde-connect
-    kdePackages.kcalc # calculator
-    thunderbird
-    # kdePackages.neochat # matrix client by KDE
-    gimp # edit photos
-    ffmpeg_7 # gif and videos
-    hugo # static site engine
-    lazygit # git TUI
-    qbittorrent # torrent client
-    discord # voice, text and video chat
-    networkmanagerapplet # nm-applet
-    xdotool # x11 automation tool
-    tor-browser # tor network browser
-    vlc # media player
-    tree-sitter # syntax highlighter
-    pinta # paint program
-    zoxide # better cd command
-    fastfetch # neofetch successor
-    webcamoid # webcam
-    neovide # neovim GUI
-    ripgrep # better grep command
-    fd # better find command
-    fzf # fuzzy finder
-    chafa # terminal graphics
-    # ueberzugpp # terminal graphics # probably requires configuration dosn't work oftb.
-    # viu # teminal graphics
-    # ghostty
-    file
-    # krusader # split file manager
-    yazi # terminal file manager
-    tree # show directory tree
-    tig # git TUI
-    gnumake # idr why its here, I needed it for some program to compile
-    nix-tree # interactive browse dependency graphs of nix derivations
-    nixd # nix LSP
-    nixfmt-rfc-style # official nix formatter
-    nix-output-monitor
-    openssl # cryptographic library that implements the SSL and TLS protocols
-    httpie # HTTP cli tool thats human friendly
-
-    btop # replacement of htop/nmon
-    dust # du alternative
-    scc # code counter
-    hyperfine # benchmarking tool
-
-    dig # dns lookup
-    inetutils
-    ollama
-    wineWowPackages.waylandFull # wine for windows programs
-    samba4Full
-    ghostscript # postscript interpreter (pdf previews)
-    tectonic # modern Tex engine
-    icu # unicode and globalization support library
-
+  home.packages = with pkgs; [
+    #   nodejs # copilot server
+    #   jdk # java development kit
+    #   gradle # java build system
+    #   maven # java build system
+    #   cargo # rust package manager
+    #   postman # API Development Environment
+    #   openapi-generator-cli # generate API client/server code
+    #   lua51Packages.lua # lua_5.1
+    #   luajitPackages.luarocks # lua package manager
+    #   libsForQt5.umbrello # UML GUI
+    #   ghc # glasgo haskell compiler
+    #   haskell-language-server # haskell LSP
+    #   python3
+    #   kdePackages.merkuro # calender
+    #   kdePackages.kdeconnect-kde # kde-connect
+    #   kdePackages.kcalc # calculator
+    #   thunderbird
+    #   # kdePackages.neochat # matrix client by KDE
+    #   gimp # edit photos
+    #   ffmpeg_7 # gif and videos
+    #   hugo # static site engine
+    #   lazygit # git TUI
+    #   qbittorrent # torrent client
+    #   discord # voice, text and video chat
+    #   networkmanagerapplet # nm-applet
+    #   xdotool # x11 automation tool
+    #   tor-browser # tor network browser
+    #   vlc # media player
+    #   tree-sitter # syntax highlighter
+    #   pinta # paint program
+    #   zoxide # better cd command
+    #   fastfetch # neofetch successor
+    #   webcamoid # webcam
+    #   neovide # neovim GUI
+    #   ripgrep # better grep command
+    #   fd # better find command
+    #   fzf # fuzzy finder
+    #   chafa # terminal graphics
+    #   # ueberzugpp # terminal graphics # probably requires configuration dosn't work oftb.
+    #   # viu # teminal graphics
+    #   # ghostty
+    #   file
+    #   # krusader # split file manager
+    #   yazi # terminal file manager
+    #   tree # show directory tree
+    #   tig # git TUI
+    #   gnumake # idr why its here, I needed it for some program to compile
+    #   nix-tree # interactive browse dependency graphs of nix derivations
+    #   nixd # nix LSP
+    #   nixfmt-rfc-style # official nix formatter
+    #   nix-output-monitor
+    #   openssl # cryptographic library that implements the SSL and TLS protocols
+    #   httpie # HTTP cli tool thats human friendly
+    #
+    #   btop # replacement of htop/nmon
+    #   dust # du alternative
+    #   scc # code counter
+    #   hyperfine # benchmarking tool
+    #
+    #   dig # dns lookup
+    #   inetutils
+    #   ollama
+    #   wineWowPackages.waylandFull # wine for windows programs
+    #   samba4Full
+    #   ghostscript # postscript interpreter (pdf previews)
+    #   tectonic # modern Tex engine
+    #   icu # unicode and globalization support library
+    #
     zen-browser.packages."x86_64-linux".default # browser
   ];
-
-  # basic configuration of git
+  #
+  # # basic configuration of git
   programs.git = {
     enable = true;
     userName = "Vanshaj Saxena";
@@ -90,20 +90,20 @@
       };
     };
   };
-
+  #
   programs.bat = {
     enable = true;
     config = {
       theme = "gruvbox-dark";
     };
   };
-
+  #
   programs.eza = {
     enable = true;
     git = true;
     icons = "always";
   };
-
+  #
   programs.btop = {
     enable = true;
     settings = {
@@ -116,7 +116,7 @@
       selected_battery = "BAT1";
     };
   };
-
+  #
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -158,7 +158,7 @@
       '';
     };
   };
-
+  #
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -183,7 +183,7 @@
       bind-key k select-pane -U
       bind-key l select-pane -R
 
-      # resize pane 
+      # resize pane
       bind-key -r -T prefix C-h resize-pane -L
       bind-key -r -T prefix C-j resize-pane -D
       bind-key -r -T prefix C-k resize-pane -U
@@ -193,7 +193,7 @@
       set -ga terminal-overrides ',*256col*:Tc'
       set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
       set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
-      # 30% v-split 
+      # 30% v-split
       bind-key E split-window -h -l 38% -c '#{pane_current_path}'
       bind-key R run-shell 'tmux neww'
 
@@ -219,14 +219,14 @@
       # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
       run '~/.tmux/plugins/tpm/tpm'
     '';
-    plugins = with pkgs-unstable; [
+    plugins = with pkgs; [
       tmuxPlugins.cpu
       {
         plugin = tmuxPlugins.vim-tmux-navigator;
       }
     ];
   };
-
+  #
   programs.sioyek = {
     enable = true;
     bindings = {
@@ -247,7 +247,7 @@
       "wheel_zoom_on_cursor" = "1";
     };
   };
-
+  #
   programs.kitty = {
     enable = true;
     font.name = "FiraCode Nerd Font";
@@ -281,7 +281,7 @@
       confirm_os_window_close = 0;
     };
   };
-
+  #
   programs.neovim = {
     enable = true;
     vimAlias = true;

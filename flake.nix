@@ -24,9 +24,11 @@
       zen-browser-flake,
       ...
     }:
+    let
+      system = "x86_64-linux";
+    in
     {
-      nixosConfigurations.NIXOS = nixpkgs-unstable.lib.nixosSystem rec {
-        system = "x86_64-linux";
+      nixosConfigurations.NIXOS = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {
           nixos-stable = import nixpkgs-stable {
             inherit system;
@@ -39,28 +41,18 @@
         };
         modules = [
           ./configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users.vanshaj = import ./home.nix;
-            home-manager.backupFileExtension = "backup";
-
-            home-manager.extraSpecialArgs = {
-              zen-browser = zen-browser-flake;
-              #pkgs-stable = import nixpkgs-stable {
-              #inherit system;
-              #config.allowUnfree = true;
-              #};
-              pkgs-unstable = import nixpkgs-unstable {
-                inherit system;
-                config.allowUnfree = true;
-              };
-            };
-          }
         ];
+      };
+
+      homeConfigurations = {
+        "vanshaj" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs-unstable { inherit system; };
+          # > Our main home-manager configuration file <
+          modules = [ ./home-manager/home.nix ];
+          extraSpecialArgs = {
+            zen-browser = zen-browser-flake;
+          };
+        };
       };
     };
 }
