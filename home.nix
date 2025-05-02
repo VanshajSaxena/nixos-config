@@ -276,7 +276,7 @@
       scrollback_lines = 10000;
       dynamic_background_opacity = "yes";
       cursor_trail = 1;
-      cursor_trail_decay = "0.15 0.45";
+      cursor_trail_decay = "0.05 0.20";
       cursor_trail_start_threshold = 1;
       confirm_os_window_close = 0;
     };
