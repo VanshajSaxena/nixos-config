@@ -7,6 +7,7 @@
   imports = [
     ./programs
     ./shell
+    ./hyprland
   ];
 
   home.packages = [

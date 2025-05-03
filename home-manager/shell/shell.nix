@@ -28,16 +28,16 @@
       theme = "gentoo";
       extraConfig = ''
         # this function helps me to attach to an existing tmux session
-        if [ -z "$TMUX" ]; then
-          attach_session=$(tmux 2> /dev/null ls -F \
-            '#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
-            awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
-          if [ -n "$attach_session" ]; then
-            tmux attach -t "$attach_session"
-          else
-            tmux
-          fi
-        fi
+        # if [ -z "$TMUX" ]; then
+        #   attach_session=$(tmux 2> /dev/null ls -F \
+        #     '#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
+        #     awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
+        #   if [ -n "$attach_session" ]; then
+        #     tmux attach -t "$attach_session"
+        #   else
+        #     tmux
+        #   fi
+        # fi
       '';
     };
   };
