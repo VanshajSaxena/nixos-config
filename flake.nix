@@ -30,10 +30,7 @@
     {
       nixosConfigurations.NIXOS = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {
-          nixos-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          nixos-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
           #nixos-unstable = import nixpkgs-unstable {
           #inherit system;
           #config.allowUnfree = true;
@@ -46,8 +43,8 @@
 
       homeConfigurations = {
         "vanshaj" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs-unstable { inherit system; };
-          # > Our main home-manager configuration file <
+          pkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true;};
+
           modules = [ ./home-manager/home.nix ];
           extraSpecialArgs = {
             zen-browser = zen-browser-flake;
