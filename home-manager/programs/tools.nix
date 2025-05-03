@@ -51,11 +51,11 @@
     fd
     fzf
     yazi
-    xdotool # x11 automation tool
+    xdotool # X11 automation tool
     dust # du alternative
     scc # code counter
     hyperfine # benchmarking tool
-    # ffmpeg_7 # gif and videos
+    # ffmpeg_7 # GIF and videos
   ];
 
 }

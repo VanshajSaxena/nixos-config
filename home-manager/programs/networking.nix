@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    dig # dns lookup
+    dig # DNS lookup
     inetutils
-    httpie # HTTP cli tool thats human friendly
-    networkmanagerapplet # nm-applet
+    httpie # HTTP CLI tool that's human friendly
+    networkmanagerapplet # NM-applet
   ];
 }

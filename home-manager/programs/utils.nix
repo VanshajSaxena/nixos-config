@@ -25,5 +25,6 @@
     hugo # static site engine
     kdePackages.kdeconnect-kde # kde-connect
     webcamoid # webcam
+    #   kdePackages.kcalc # calculator
   ];
 }
