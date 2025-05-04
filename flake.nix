@@ -5,12 +5,12 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/master";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
       # the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs.
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     hyprland.url = "github:hyprwm/Hyprland";
     # temporary flake for zen-browser
@@ -50,7 +50,6 @@
         "vanshaj" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs-unstable {
             inherit system;
-            inherit inputs;
             config.allowUnfree = true;
           };
 
