@@ -3,6 +3,7 @@
 {
   home.username = "vanshaj";
   home.homeDirectory = "/home/vanshaj";
+  home.shell.enableZshIntegration = true;
 
   imports = [
     ./programs

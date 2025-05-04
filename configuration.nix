@@ -1,4 +1,4 @@
-{ nixos-stable, ... }:
+{ inputs, nixos-stable, ... }:
 
 {
   imports = [
@@ -54,7 +54,14 @@
 
   services.xserver.enable = true;
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage =
+      inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;

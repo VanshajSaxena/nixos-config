@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    hyprpaper
+    xdg-desktop-portal-gtk # Hyprland file picker exception
+    brightnessctl
+    playerctl
   ];
 }
