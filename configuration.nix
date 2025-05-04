@@ -63,7 +63,7 @@
     enable = enabledHyprland;
     # set the flake package
     package = inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
+    # Make sure to also set the portal package, so that they are in sync
     portalPackage =
       inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
@@ -139,7 +139,7 @@
 
   programs.nix-ld.enable = true;
 
-  # Use ipv4 address family when connecting with ssh (git push/pull delay issue).
+  # Use IPv4 address family when connecting with ssh (git push/pull delay issue).
   programs.ssh.extraConfig = "AddressFamily inet";
 
   nix.gc = {
@@ -168,7 +168,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. Its perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
