@@ -1,6 +1,13 @@
-{ pkgs, zen-browser, ... }:
-
 {
+  inputs,
+  zen-browser,
+  ...
+}:
+{
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   home.username = "vanshaj";
   home.homeDirectory = "/home/vanshaj";
   home.shell.enableZshIntegration = true;

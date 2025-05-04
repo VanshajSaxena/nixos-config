@@ -56,6 +56,7 @@
           modules = [ ./home-manager/home.nix ];
           extraSpecialArgs = {
             zen-browser = zen-browser-flake;
+            inherit inputs;
           };
         };
       };
