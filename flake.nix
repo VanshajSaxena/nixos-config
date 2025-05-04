@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    catppuccin.url = "github:catppuccin/nix";
     # temporary flake for zen-browser
     zen-browser-flake.url = "github:0xc000022070/zen-browser-flake";
   };
@@ -23,17 +24,19 @@
       nixpkgs-unstable,
       home-manager,
       zen-browser-flake,
+      catppuccin,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
+      enabledHyprland = true;
     in
     {
       nixosConfigurations.NIXOS = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           nixos-stable = import nixpkgs-stable {
-            inherit system;
+            inherit system enabledHyprland;
             config.allowUnfree = true;
           };
           #nixos-unstable = import nixpkgs-unstable {
@@ -53,10 +56,13 @@
             config.allowUnfree = true;
           };
 
-          modules = [ ./home-manager/home.nix ];
+          modules = [
+            ./home-manager/home.nix
+            catppuccin.homeModules.catppuccin
+          ];
           extraSpecialArgs = {
             zen-browser = zen-browser-flake;
-            inherit inputs;
+            inherit inputs enabledHyprland;
           };
         };
       };

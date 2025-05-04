@@ -4,7 +4,7 @@
     enable = true;
     font.name = "FiraCode Nerd Font";
     font.size = 12; # 12 being normal
-    themeFile = "Argonaut";
+    #themeFile = "Argonaut"; # use global catppuccin
     keybindings = {
       "ctrl+shift+/" = "launch --location=hsplit";
       "ctrl+shift+\\" = "launch --location=vsplit";

@@ -1,5 +1,7 @@
 {
   zen-browser,
+  catppuccin,
+  enabledHyprland,
   ...
 }:
 {
@@ -20,6 +22,13 @@
   home.packages = [
     zen-browser.packages."x86_64-linux".default # browser
   ];
+
+  catppuccin = {
+    enable = enabledHyprland;
+    mako.enable = false; # temp fix
+    nvim.enable = false;
+    flavor = "mocha";
+  };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

@@ -28,14 +28,14 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "gruvbox-dark";
+      #theme = "gruvbox-dark";
     };
   };
 
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "gruvbox_material_dark";
+      # color_theme = "gruvbox_material_dark";
       theme_background = false;
       truecolor = true;
       vim_keys = true;

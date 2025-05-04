@@ -1,4 +1,9 @@
-{ inputs, nixos-stable, ... }:
+{
+  inputs,
+  nixos-stable,
+  enabledHyprland,
+  ...
+}:
 
 {
   imports = [
@@ -55,7 +60,7 @@
   services.xserver.enable = true;
 
   programs.hyprland = {
-    enable = true;
+    enable = enabledHyprland;
     # set the flake package
     package = inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.hyprland;
     # make sure to also set the portal package, so that they are in sync
