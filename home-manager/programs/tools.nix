@@ -55,6 +55,8 @@
     dust # du alternative
     scc # code counter
     hyperfine # benchmarking tool
+    tectonic
+    ghostscript
     # ffmpeg_7 # GIF and videos
   ];
 
