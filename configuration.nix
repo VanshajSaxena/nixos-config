@@ -72,6 +72,10 @@
       inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  # fix wifi password issue for hyprland
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = [ nixos-stable.kdePackages.kate ];
