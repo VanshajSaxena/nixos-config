@@ -61,6 +61,10 @@
 
   programs.hyprland = {
     enable = enabledHyprland;
+    # WARN: If you use the Home Manager module, make sure to disable the
+    # systemd integration, as it conflicts with uwsm. Like this:
+    # `wayland.windowManager.hyprland.systemd.enable = false;`
+    withUWSM = true;
     # set the flake package
     package = inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.hyprland;
     # Make sure to also set the portal package, so that they are in sync
