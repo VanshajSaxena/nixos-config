@@ -34,9 +34,9 @@
     {
       nixosConfigurations.NIXOS = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {
-          inherit inputs;
+          inherit inputs enabledHyprland;
           nixos-stable = import nixpkgs-stable {
-            inherit system enabledHyprland;
+            inherit system;
             config.allowUnfree = true;
           };
           #nixos-unstable = import nixpkgs-unstable {
