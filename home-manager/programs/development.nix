@@ -29,5 +29,8 @@
     # Nix
     nixfmt-rfc-style # official nix formatter
     nixd # nix LSP
+
+    # Docs
+    mermaid-cli # mermaid diagrams
   ];
 }
