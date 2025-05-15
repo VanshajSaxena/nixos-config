@@ -50,6 +50,7 @@
     ripgrep
     fd
     fzf
+    htop
     yazi
     xdotool # X11 automation tool
     dust # du alternative
@@ -57,6 +58,7 @@
     hyperfine # benchmarking tool
     tectonic
     ghostscript
+    wev # wayland event viewer
     # ffmpeg_7 # GIF and videos
   ];
 
