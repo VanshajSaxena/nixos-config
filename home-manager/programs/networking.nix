@@ -4,6 +4,9 @@
     dig # DNS lookup
     inetutils
     httpie # HTTP CLI tool that's human friendly
-    networkmanagerapplet # NM-applet
   ];
+
+  services.network-manager-applet = {
+    enable = true;
+  };
 }
