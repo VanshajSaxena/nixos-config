@@ -84,6 +84,11 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
+  services.upower = {
+    enable = true;
+    criticalPowerAction = "Hibernate";
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
