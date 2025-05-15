@@ -13,6 +13,7 @@
       leet = "nvim leetcode.nvim";
       leetvide = "neovide -- leetcode.nvim";
     };
+    autosuggestion.enable = true;
     oh-my-zsh = {
       enable = true;
       plugins = [
