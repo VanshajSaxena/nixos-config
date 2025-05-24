@@ -5,4 +5,8 @@
     brightnessctl
     playerctl
   ];
+
+  programs.waybar = {
+    enable = true;
+  };
 }

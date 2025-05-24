@@ -2,6 +2,31 @@
 {
   programs.zsh = {
     enable = true;
+    initContent = ''
+      # this function helps me to attach to an existing tmux session
+      # if [ -z "$TMUX" ]; then
+      #   attach_session=$(tmux 2> /dev/null ls -F \
+      #     '#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
+      #     awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
+      #   if [ -n "$attach_session" ]; then
+      #     tmux attach -t "$attach_session"
+      #   else
+      #     tmux
+      #   fi
+      # fi
+
+      # WARN: this should ideally be in custom oh-my-zsh config
+      ### vi-mode tweaks ###
+
+      # fix vi-mode ESC being slow
+      export KEYTIMEOUT=15
+      # cursor style changes when switch to different mode
+      export VI_MODE_SET_CURSOR=true
+      # disable the `<<<` mark in the normal mode
+      export MODE_INDICATOR=""
+      # disable the mark in the insert mode too (although not visible by default)
+      export INSERT_MODE_INDICATOR=""
+    '';
     shellAliases = {
       lz = "lazygit";
       nf = "fastfetch";
@@ -25,21 +50,9 @@
         "fzf"
         "gradle"
         "mvn"
+        "vi-mode"
       ];
       theme = "gentoo";
-      extraConfig = ''
-        # this function helps me to attach to an existing tmux session
-        # if [ -z "$TMUX" ]; then
-        #   attach_session=$(tmux 2> /dev/null ls -F \
-        #     '#{session_attached} #{?#{==:#{session_last_attached},},1,#{session_last_attached}} #{session_id}' |
-        #     awk '/^0/ { if ($2 > t) { t = $2; s = $3 } }; END { if (s) printf "%s", s }')
-        #   if [ -n "$attach_session" ]; then
-        #     tmux attach -t "$attach_session"
-        #   else
-        #     tmux
-        #   fi
-        # fi
-      '';
     };
   };
 
