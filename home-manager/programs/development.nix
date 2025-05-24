@@ -32,5 +32,8 @@
 
     # Docs
     mermaid-cli # mermaid diagrams
+
+    # Lib
+    icu # Unicode and globalization support library # marksman-lsp
   ];
 }
