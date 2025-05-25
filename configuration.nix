@@ -115,14 +115,10 @@
   };
 
   fonts.packages = with nixos-stable; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-        "VictorMono"
-        "Monaspace"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.victor-mono
+    nerd-fonts.monaspace
   ];
 
   programs.firefox = {
