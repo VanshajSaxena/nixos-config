@@ -24,6 +24,8 @@
       font_features FiraCodeNF-SemBd +zero +ss03 +ss04 +ss10 +cv16 +cv30
       font_features FiraCodeNF-Ret +zero +ss03 +ss04 +ss10 +cv16 +cv30
       background #141617
+      cursor #FFFFFF
+
       # term xterm-256color # don't set the term variable
       include ./font.conf
     '';
@@ -35,8 +37,9 @@
       cursor_blink_interval = 0;
       scrollback_lines = 10000;
       dynamic_background_opacity = "yes";
+      sync_to_monitor = "yes";
       cursor_trail = 1;
-      cursor_trail_decay = "0.05 0.20";
+      cursor_trail_decay = "0.05 0.25";
       cursor_trail_start_threshold = 1;
       confirm_os_window_close = 0;
       allow_remote_control = "socket-only";
