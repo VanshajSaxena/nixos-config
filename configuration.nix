@@ -95,6 +95,9 @@
   services.upower = {
     enable = true;
     criticalPowerAction = "Hibernate";
+    percentageAction = 5;
+    percentageCritical = 15;
+    percentageLow = 20;
   };
 
   services.pipewire = {

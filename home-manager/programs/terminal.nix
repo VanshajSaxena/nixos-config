@@ -5,8 +5,8 @@
     font.name = "FiraCode Nerd Font";
     font.size = 12; # 12 being normal
     keybindings = {
-      "ctrl+shift+/" = "launch --location=hsplit";
-      "ctrl+shift+\\" = "launch --location=vsplit";
+      "kitty_mod+v" = "launch --location=hsplit";
+      "kitty_mod+s" = "launch --location=vsplit";
     };
     extraConfig = ''
       # kitty-scrollback.nvim Kitten alias
@@ -44,6 +44,16 @@
       confirm_os_window_close = 0;
       allow_remote_control = "socket-only";
       shell_integration = "enabled";
+
+      tab_bar_align = "left";
+      tab_bar_style = "powerline";
+      tab_separator = "";
+      tab_powerline_style = "round";
+      tab_bar_min_tabs = 1;
+      #tab_activity_symbol = """󰛄 ";
+      tab_title_max_length = 15;
+      tab_bar_background = "#141617";
+      tab_title_template = "fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{sup.index}{title}";
     };
   };
 }

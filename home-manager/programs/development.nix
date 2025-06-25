@@ -2,7 +2,8 @@
 {
   home.packages = with pkgs; [
     # Node
-    nodejs # copilot server
+    nodejs
+    yarn
 
     # Java
     jdk # java development kit
