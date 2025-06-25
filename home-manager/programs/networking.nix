@@ -6,7 +6,4 @@
     httpie # HTTP CLI tool that's human friendly
   ];
 
-  services.network-manager-applet = {
-    enable = true;
-  };
 }

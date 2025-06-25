@@ -3,7 +3,6 @@
   home.packages = with pkgs; [
     # Node
     nodejs
-    yarn
 
     # Java
     jdk # java development kit
@@ -22,7 +21,7 @@
     luajitPackages.luarocks
 
     # Haskell
-    ghc
+    # ghc # Glasgow Haskell Compiler
 
     #Python
     python3

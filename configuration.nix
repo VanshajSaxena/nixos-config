@@ -1,7 +1,6 @@
 {
   inputs,
   nixos-stable,
-  enabledHyprland,
   ...
 }:
 
@@ -14,11 +13,6 @@
     "nix-command"
     "flakes"
   ];
-
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -59,23 +53,6 @@
 
   services.xserver.enable = true;
 
-  programs.hyprland = {
-    enable = enabledHyprland;
-    # WARN: If you use the Home Manager module, make sure to disable the
-    # systemd integration, as it conflicts with uwsm. Like this:
-    # `wayland.windowManager.hyprland.systemd.enable = false;`
-    withUWSM = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.hyprland;
-    # Make sure to also set the portal package, so that they are in sync
-    portalPackage =
-      inputs.hyprland.packages.${nixos-stable.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  # fix wifi password issue for hyprland
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
-
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = [ nixos-stable.kdePackages.kate ];
@@ -91,14 +68,6 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  services.upower = {
-    enable = true;
-    criticalPowerAction = "Hibernate";
-    percentageAction = 5;
-    percentageCritical = 15;
-    percentageLow = 20;
-  };
 
   services.pipewire = {
     enable = true;

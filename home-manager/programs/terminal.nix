@@ -4,9 +4,12 @@
     enable = true;
     font.name = "FiraCode Nerd Font";
     font.size = 12; # 12 being normal
+    themeFile = "gruvbox-dark-hard";
     keybindings = {
-      "kitty_mod+v" = "launch --location=hsplit";
-      "kitty_mod+s" = "launch --location=vsplit";
+      "kitty_mod+w>v" = "launch --location=vsplit";
+      "kitty_mod+w>s" = "launch --location=hsplit";
+      "kitty_mod+w>x" = "close_window";
+      "kitty_mod+w>w" = "next_window";
     };
     extraConfig = ''
       # kitty-scrollback.nvim Kitten alias
