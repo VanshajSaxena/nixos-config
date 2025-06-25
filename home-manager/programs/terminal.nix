@@ -6,10 +6,10 @@
     font.size = 12; # 12 being normal
     themeFile = "gruvbox-dark-hard";
     keybindings = {
-      "kitty_mod+w>v" = "launch --location=vsplit";
-      "kitty_mod+w>s" = "launch --location=hsplit";
-      "kitty_mod+w>x" = "close_window";
-      "kitty_mod+w>w" = "next_window";
+      "map kitty_mod+a>v" = "launch --location=vsplit";
+      "map kitty_mod+a>s" = "launch --location=hsplit";
+      "map kitty_mod+a>x" = "close_window";
+      "map kitty_mod+a>w" = "next_window";
     };
     extraConfig = ''
       # kitty-scrollback.nvim Kitten alias
@@ -27,7 +27,7 @@
       font_features FiraCodeNF-SemBd +zero +ss03 +ss04 +ss10 +cv16 +cv30
       font_features FiraCodeNF-Ret +zero +ss03 +ss04 +ss10 +cv16 +cv30
       background #141617
-      cursor #FFFFFF
+      cursor #ebdbb2
 
       # term xterm-256color # don't set the term variable
       include ./font.conf
@@ -53,7 +53,6 @@
       tab_separator = "";
       tab_powerline_style = "round";
       tab_bar_min_tabs = 1;
-      #tab_activity_symbol = """󰛄 ";
       tab_title_max_length = 15;
       tab_bar_background = "#141617";
       tab_title_template = "fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{sup.index}{title}";
