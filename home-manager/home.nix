@@ -1,5 +1,6 @@
 {
   zen-browser,
+  pkgs,
   ...
 }:
 {
@@ -15,6 +16,18 @@
     ./programs
     ./shell
   ];
+
+  home.sessionVariables = {
+    GTK_USE_PORTAL = "1";
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      kdePackages.xdg-desktop-portal-kde
+    ];
+    config.common.default = "kde";
+  };
 
   home.packages = [
     zen-browser.packages."x86_64-linux".default # browser
