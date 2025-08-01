@@ -6,10 +6,10 @@
     font.size = 12; # 12 being normal
     themeFile = "gruvbox-dark-hard";
     keybindings = {
-      "map kitty_mod+a>v" = "launch --location=vsplit";
-      "map kitty_mod+a>s" = "launch --location=hsplit";
-      "map kitty_mod+a>x" = "close_window";
-      "map kitty_mod+a>w" = "next_window";
+      "kitty_mod+a>v" = "launch --location=vsplit";
+      "kitty_mod+a>s" = "launch --location=hsplit";
+      "kitty_mod+a>x" = "close_window";
+      "kitty_mod+a>w" = "next_window";
     };
     extraConfig = ''
       # kitty-scrollback.nvim Kitten alias
