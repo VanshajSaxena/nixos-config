@@ -50,6 +50,7 @@
     ripgrep
     fd
     fzf
+    tig
     htop
     yazi
     xdotool # X11 automation tool
@@ -59,6 +60,7 @@
     tectonic
     ghostscript
     wev # wayland event viewer
+    imagemagick
     # ffmpeg_7 # GIF and videos
   ];
 
