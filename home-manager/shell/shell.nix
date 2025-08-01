@@ -26,6 +26,9 @@
       export MODE_INDICATOR=""
       # disable the mark in the insert mode too (although not visible by default)
       export INSERT_MODE_INDICATOR=""
+
+      # Nix direnv shell hook
+      eval "$(direnv hook zsh)"
     '';
     shellAliases = {
       lz = "lazygit";
