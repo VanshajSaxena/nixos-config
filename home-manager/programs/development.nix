@@ -1,6 +1,11 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+
+    #Nix
+    direnv
+    nix-direnv
+
     # Node
     nodejs
 
@@ -25,6 +30,7 @@
 
     #Python
     python3
+    uv
 
     # Nix
     nixfmt-rfc-style # official nix formatter
