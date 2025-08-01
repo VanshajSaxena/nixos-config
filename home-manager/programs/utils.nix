@@ -21,6 +21,10 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     hugo # static site engine
     kdePackages.kdeconnect-kde # kde-connect
