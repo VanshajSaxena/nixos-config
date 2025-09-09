@@ -45,9 +45,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  services.mysql = {
+  services.postgresql = {
     enable = true;
-    package = nixos-stable.mysql84;
+    ensureDatabases = [ "testdb" ];
+    authentication = nixos-stable.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+    '';
   };
 
   services.xserver.enable = true;
