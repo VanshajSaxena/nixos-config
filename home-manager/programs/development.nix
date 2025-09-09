@@ -8,6 +8,7 @@
 
     # Node
     nodejs
+    yarn
 
     # Java
     jdk # java development kit
