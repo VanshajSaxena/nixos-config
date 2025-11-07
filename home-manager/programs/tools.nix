@@ -2,9 +2,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "Vanshaj Saxena";
-    userEmail = "vs110405@outlook.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Vanshaj Saxena";
+        email = "vs110405@outlook.com";
+      };
       init = {
         defaultBranch = "master";
       };
@@ -28,7 +30,7 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "gruvbox-dark";
+      theme = "kanagawa-wave";
     };
   };
 
