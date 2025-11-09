@@ -14,6 +14,7 @@
     };
     # temporary flake for zen-browser
     zen-browser-flake.url = "github:0xc000022070/zen-browser-flake";
+    niri-flake.url = "github:sodiboo/niri-flake";
   };
 
   outputs =
@@ -50,6 +51,7 @@
           pkgs = import nixpkgs-unstable {
             inherit system;
             config.allowUnfree = true;
+            overlays = [ inputs.niri-flake.overlays.niri ];
           };
 
           modules = [
