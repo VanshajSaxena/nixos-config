@@ -62,6 +62,7 @@
             inherit inputs;
           };
         };
+        backupFileExtension = "backup";
       };
     };
 }

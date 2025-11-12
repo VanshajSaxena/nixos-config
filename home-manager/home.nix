@@ -16,14 +16,9 @@
   imports = [
     ./programs
     ./shell
+    ./niri
     inputs.niri-flake.homeModules.niri
   ];
-
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable; # optional: can use stable as well
-  };
-  #
 
   home.sessionVariables = {
     GTK_USE_PORTAL = "1";
