@@ -25,4 +25,10 @@
     playerctl
 
   ];
+
+  services = {
+    polkit-gnome = {
+      enable = true;
+    };
+  };
 }
