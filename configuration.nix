@@ -1,12 +1,25 @@
 {
   nixos-stable,
+  pkgs,
+  inputs,
   ...
 }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.niri-flake.nixosModules.niri
   ];
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [ inputs.niri-flake.overlays.niri ];
+  };
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -103,8 +116,6 @@
   };
 
   programs.zsh.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with nixos-stable; [
     git

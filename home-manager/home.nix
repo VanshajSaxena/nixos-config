@@ -1,14 +1,9 @@
 {
   zen-browser,
   pkgs,
-  inputs,
   ...
 }:
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   home.username = "vanshaj";
   home.homeDirectory = "/home/vanshaj";
   home.shell.enableZshIntegration = true;
@@ -17,11 +12,11 @@
     ./programs
     ./shell
     ./niri
-    inputs.niri-flake.homeModules.niri
   ];
 
   home.sessionVariables = {
     GTK_USE_PORTAL = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   xdg.portal = {
@@ -32,11 +27,8 @@
     config.common.default = "kde";
   };
 
-  home.packages = with pkgs; [
+  home.packages = [
     zen-browser.packages."x86_64-linux".default # browser
-    waybar
-    fuzzel
-    mako
   ];
 
   # This value determines the home Manager release that your

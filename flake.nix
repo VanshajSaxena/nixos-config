@@ -43,26 +43,18 @@
         };
         modules = [
           ./configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.vanshaj = import ./home-manager/home.nix;
+            home-manager.extraSpecialArgs = {
+              zen-browser = zen-browser-flake;
+            };
+            home-manager.backupFileExtension = "backup";
+          }
         ];
-      };
-
-      homeConfigurations = {
-        "vanshaj" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [ inputs.niri-flake.overlays.niri ];
-          };
-
-          modules = [
-            ./home-manager/home.nix
-          ];
-          extraSpecialArgs = {
-            zen-browser = zen-browser-flake;
-            inherit inputs;
-          };
-        };
-        backupFileExtension = "backup";
       };
     };
 }
