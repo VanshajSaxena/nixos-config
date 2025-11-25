@@ -1,6 +1,5 @@
 {
   nixos-stable,
-  pkgs,
   inputs,
   ...
 }:
@@ -18,8 +17,12 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
   };
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
+  # programs.seahorse.enable = true; # GUI for managing keyring
 
   nix.settings.experimental-features = [
     "nix-command"

@@ -22,9 +22,13 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
       kdePackages.xdg-desktop-portal-kde
     ];
-    config.common.default = "kde";
+    config.common.default = [
+      "gnome"
+      "kde"
+    ];
   };
 
   home.packages = [
