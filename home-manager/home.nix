@@ -23,14 +23,25 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gnome
-      kdePackages.xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk # Fallback for file picker
     ];
-    config.common.default = [
-      "gnome"
-      "kde"
-    ];
+    config = {
+      common = {
+        default = [
+          "gtk"
+          "gnome"
+        ];
+      };
+      niri = {
+        default = [
+          "gnome"
+        ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+      };
+    };
   };
-
   home.packages = [
     zen-browser.packages."x86_64-linux".default # browser
   ];

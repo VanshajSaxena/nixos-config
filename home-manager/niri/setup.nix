@@ -13,6 +13,7 @@
     brightnessctl
     wireplumber
     playerctl
+    networkmanagerapplet
   ];
 
 }
