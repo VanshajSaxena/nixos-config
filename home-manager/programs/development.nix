@@ -42,5 +42,6 @@
 
     # Lib
     icu # Unicode and globalization support library # marksman-lsp
+    jq
   ];
 }
