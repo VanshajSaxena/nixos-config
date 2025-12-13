@@ -10,6 +10,9 @@
       init = {
         defaultBranch = "master";
       };
+      pull = {
+        ff = "only";
+      };
       diff = {
         tool = "vimdiff";
       };
@@ -29,9 +32,6 @@
 
   programs.bat = {
     enable = true;
-    config = {
-      theme = "kanagawa-wave";
-    };
   };
 
   programs.btop = {

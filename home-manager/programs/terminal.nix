@@ -4,7 +4,7 @@
     enable = true;
     font.name = "FiraCode Nerd Font";
     font.size = 12; # 12 being normal
-    themeFile = "gruvbox-dark-hard";
+    themeFile = "kanagawa_dragon";
     keybindings = {
       "kitty_mod+a>v" = "launch --location=vsplit";
       "kitty_mod+a>s" = "launch --location=hsplit";
@@ -33,7 +33,7 @@
       include ./font.conf
     '';
     settings = {
-      background_opacity = "0.70";
+      background_opacity = "0.80";
       hide_window_decorations = "yes";
       enabled_layouts = "splits";
       cursor_shape = "block";
