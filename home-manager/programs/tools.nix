@@ -32,12 +32,16 @@
 
   programs.bat = {
     enable = true;
+    config = {
+      italic-text = "always";
+      theme = "Dracula";
+    };
   };
 
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "gruvbox_material_dark";
+      color_theme = "onedark";
       theme_background = false;
       truecolor = true;
       vim_keys = true;
