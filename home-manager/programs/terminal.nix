@@ -6,6 +6,7 @@
     font.size = 12; # 12 being normal
     themeFile = "kanagawa_dragon";
     keybindings = {
+      "kitty_mod+a>a" = "launch --location=vsplit";
       "kitty_mod+a>v" = "launch --location=vsplit";
       "kitty_mod+a>s" = "launch --location=hsplit";
       "kitty_mod+a>x" = "close_window";
