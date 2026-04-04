@@ -34,7 +34,7 @@
     uv
 
     # Nix
-    nixfmt-rfc-style # official nix formatter
+    nixfmt
     nixd # nix LSP
 
     # Docs

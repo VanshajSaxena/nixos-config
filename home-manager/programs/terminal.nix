@@ -2,7 +2,7 @@
 {
   programs.kitty = {
     enable = true;
-    font.name = "FiraCode Nerd Font";
+    font.name = "Maple Mono NF";
     font.size = 12; # 12 being normal
     themeFile = "kanagawa_dragon";
     keybindings = {
@@ -51,7 +51,7 @@
 
       tab_bar_align = "left";
       tab_bar_style = "powerline";
-      tab_separator = "";
+      # tab_separator = "";
       tab_powerline_style = "round";
       tab_bar_min_tabs = 1;
       tab_title_max_length = 15;

@@ -16,7 +16,7 @@
     };
     config = {
       "toggle_two_page_mode" = "<f2>";
-      "startup_commands" = "toggle_dark_mode;toggle_mouse_drag_mode";
+      "startup_commands" = [ "toggle_dark_mode;toggle_mouse_drag_mode" ];
       "wheel_zoom_on_cursor" = "1";
     };
   };

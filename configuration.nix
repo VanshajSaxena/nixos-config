@@ -109,6 +109,7 @@
   };
 
   fonts.packages = with nixos-stable; [
+    maple-mono.NF
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.victor-mono

@@ -17,6 +17,7 @@
         tool = "vimdiff";
       };
     };
+    signing.format = null;
   };
 
   programs.eza = {
