@@ -1,6 +1,7 @@
 {
   zen-browser,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -9,6 +10,7 @@
   home.shell.enableZshIntegration = true;
 
   imports = [
+    inputs.vicinae.homeManagerModules.default # added this
     ./programs
     ./shell
     ./niri

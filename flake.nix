@@ -12,9 +12,12 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    niri-flake.url = "github:sodiboo/niri-flake";
+    vicinae.url = "github:vicinaehq/vicinae";
+    vicinae-extensions.url = "github:vicinaehq/extensions";
+    vicinae-extensions.inputs.nixpkgs.follows = "nixpkgs-unstable";
     # temporary flake for zen-browser
     zen-browser-flake.url = "github:0xc000022070/zen-browser-flake";
-    niri-flake.url = "github:sodiboo/niri-flake";
   };
 
   outputs =
@@ -51,6 +54,7 @@
             home-manager.users.vanshaj = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = {
               zen-browser = zen-browser-flake;
+              inherit inputs;
             };
             home-manager.backupFileExtension = "backup";
           }

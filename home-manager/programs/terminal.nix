@@ -3,7 +3,7 @@
   programs.kitty = {
     enable = true;
     font.name = "Maple Mono NF";
-    font.size = 12; # 12 being normal
+    font.size = 11; # 12 being normal
     themeFile = "kanagawa_dragon";
     keybindings = {
       "kitty_mod+a>a" = "launch --location=vsplit";
