@@ -8,6 +8,7 @@
     tor-browser # tor network browser
     vlc # media player
     pinta # paint program
+    neovim
     neovide # neovim GUI
   ];
 }

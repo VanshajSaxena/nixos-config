@@ -31,6 +31,7 @@
       eval "$(direnv hook zsh)"
     '';
     shellAliases = {
+      vim = "nvim";
       lz = "lazygit";
       nf = "fastfetch";
       cat = "bat";

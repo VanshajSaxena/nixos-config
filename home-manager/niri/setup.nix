@@ -9,7 +9,6 @@
     waybar
     pamixer # waybar audio scroll
     pavucontrol # waybar audio control
-    fuzzel
     mako
     awww
     brightnessctl

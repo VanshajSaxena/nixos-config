@@ -26,11 +26,6 @@
     icons = "always";
   };
 
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-  };
-
   programs.bat = {
     enable = true;
     config = {
@@ -68,6 +63,7 @@
     ghostscript
     wev # wayland event viewer
     imagemagick
+    charm-freeze
     # ffmpeg_7 # GIF and videos
   ];
 
