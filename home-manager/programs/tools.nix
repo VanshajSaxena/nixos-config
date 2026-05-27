@@ -64,6 +64,7 @@
     wev # wayland event viewer
     imagemagick
     charm-freeze
+    silicon
     # ffmpeg_7 # GIF and videos
   ];
 
