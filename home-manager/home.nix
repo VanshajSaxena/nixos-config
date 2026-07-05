@@ -46,6 +46,7 @@
   };
   home.packages = [
     zen-browser.packages."x86_64-linux".default # browser
+    inputs.herdr.packages.${pkgs.system}.default
   ];
 
   # This value determines the home Manager release that your

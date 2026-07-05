@@ -18,6 +18,7 @@
     vicinae-extensions.inputs.nixpkgs.follows = "nixpkgs-unstable";
     # temporary flake for zen-browser
     zen-browser-flake.url = "github:0xc000022070/zen-browser-flake";
+    herdr.url = "github:ogulcancelik/herdr/v0.7.1";
   };
 
   outputs =
