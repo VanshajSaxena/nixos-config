@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    thunderbird
+    chromium
     gimp3-with-plugins # edit photos
     qbittorrent # torrent client
     discord # voice, text and video chat
