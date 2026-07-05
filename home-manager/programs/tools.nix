@@ -47,6 +47,10 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     lazygit
     ripgrep
@@ -65,6 +69,8 @@
     imagemagick
     charm-freeze
     silicon
+    kdePackages.kdeconnect-kde # kde-connect
+    webcamoid # webcam
     # ffmpeg_7 # GIF and videos
   ];
 

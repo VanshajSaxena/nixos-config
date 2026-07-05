@@ -129,7 +129,7 @@
   };
 
   home.packages = with pkgs; [
-    fastfetch # neofetch successor
+    fastfetch
     zoxide
   ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.sioyek = {
     enable = true;
@@ -20,15 +20,4 @@
       "wheel_zoom_on_cursor" = "1";
     };
   };
-
-  programs.gh = {
-    enable = true;
-  };
-
-  home.packages = with pkgs; [
-    hugo # static site engine
-    kdePackages.kdeconnect-kde # kde-connect
-    webcamoid # webcam
-    kdePackages.kcalc # calculator
-  ];
 }

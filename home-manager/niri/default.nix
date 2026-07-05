@@ -1,5 +1,5 @@
 {
-  imports = builtins.map (modules: ./. + "/${modules}") (
+  imports = map (modules: ./. + "/${modules}") (
     builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.))
   );
 }

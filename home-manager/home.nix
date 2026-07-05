@@ -12,7 +12,6 @@
   imports = [
     inputs.vicinae.homeManagerModules.default # added this
     ./programs
-    ./shell
     ./niri
   ];
 

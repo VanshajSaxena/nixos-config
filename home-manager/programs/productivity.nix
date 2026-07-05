@@ -1,6 +1,6 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  # added this
+
   programs.vicinae = {
     enable = true;
     systemd = {
@@ -37,4 +37,9 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    kdePackages.kcalc
+    hugo
+  ];
 }
