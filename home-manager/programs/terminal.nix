@@ -53,7 +53,7 @@
       tab_bar_style = "powerline";
       # tab_separator = "";
       tab_powerline_style = "round";
-      tab_bar_min_tabs = 1;
+      tab_bar_min_tabs = 2;
       tab_title_max_length = 15;
       tab_bar_background = "#141617";
       tab_title_template = "fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{sup.index}{title}";

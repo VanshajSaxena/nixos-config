@@ -9,6 +9,7 @@
     # Node
     nodejs
     yarn
+    pnpm
 
     # Java
     jdk # java development kit
