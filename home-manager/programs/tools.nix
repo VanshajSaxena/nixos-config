@@ -162,6 +162,32 @@
     };
   };
 
+  xdg.configFile."tig/config".text = ''
+    bind generic <Esc> view-close
+    bind generic h view-close
+
+    bind generic l enter
+
+    bind tree h move-up
+
+    bind generic j move-down
+    bind generic k move-up
+
+    bind generic g move-first-line
+    bind generic G move-last-line
+
+    bind generic / search
+    bind generic ? search-back
+    bind generic n find-next
+    bind generic N find-prev
+
+    bind generic O maximize
+
+    # --- Quality of Life (Yank) ---
+    # Wayland version (uncomment if using Wayland):
+    bind main y @sh -c "echo -n %(commit) | wl-copy"
+  '';
+
   home.packages = with pkgs; [
     lazygit
     ripgrep

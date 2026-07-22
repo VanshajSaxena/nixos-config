@@ -38,6 +38,7 @@
       vim = "nvim";
       lz = "lazygit";
       nf = "fastfetch";
+      tig = "ESCDELAY=25 tig";
       cat = "bat";
       ll = "l";
       lt = "exa --tree --ignore-glob '.git'";
