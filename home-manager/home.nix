@@ -45,7 +45,8 @@
   };
   home.packages = [
     zen-browser.packages."x86_64-linux".default # browser
-    inputs.herdr.packages.${pkgs.system}.default
+    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.voxtype.packages.${pkgs.stdenv.hostPlatform.system}.vulkan
   ];
 
   # This value determines the home Manager release that your
