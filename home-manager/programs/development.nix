@@ -20,8 +20,8 @@
     cargo # rust package manager
 
     # API
-    postman # API Development Environment
-    openapi-generator-cli # generate API client/server code
+    # postman # API Development Environment
+    # openapi-generator-cli # generate API client/server code
 
     # Lua
     lua51Packages.lua
@@ -41,8 +41,11 @@
     # Docs
     mermaid-cli # mermaid diagrams
 
-    # Lib
+    # markdown
+    marksman
     icu # Unicode and globalization support library # marksman-lsp
+
+    # JSON
     jq
   ];
 }
