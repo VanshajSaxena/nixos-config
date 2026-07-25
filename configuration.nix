@@ -1,5 +1,6 @@
 {
   nixos-stable,
+  nixos-unstable,
   inputs,
   ...
 }:
@@ -17,6 +18,7 @@
 
   programs.niri = {
     enable = true;
+    package = nixos-unstable.niri;
   };
 
   # added this
