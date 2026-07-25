@@ -10,6 +10,6 @@
 
   programs.chromium = {
     enable = true;
-    commandLineArgs = [ "--enable-blink-features=MiddleClickAutoscroll" ];
+    commandLineArgs = [ "--enable-features=MiddleClickAutoscroll" ];
   };
 }
