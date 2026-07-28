@@ -1,6 +1,6 @@
 {
+  pkgs,
   nixos-stable,
-  nixos-unstable,
   inputs,
   ...
 }:
@@ -18,7 +18,7 @@
 
   programs.niri = {
     enable = true;
-    package = nixos-unstable.niri;
+    package = pkgs.niri-unstable;
   };
 
   # added this
@@ -116,7 +116,7 @@
       "wheel"
       "input"
     ];
-    shell = nixos-stable.zsh;
+    shell = pkgs.zsh;
   };
 
   fonts.packages = with nixos-stable; [
