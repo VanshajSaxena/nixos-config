@@ -47,5 +47,7 @@
 
     # JSON
     jq
+
+    tree-sitter
   ];
 }
