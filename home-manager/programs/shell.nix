@@ -27,9 +27,9 @@
       # disable the mark in the insert mode too (although not visible by default)
       export INSERT_MODE_INDICATOR=""
 
-      if [ -z "$HERDR_ENV" ]; then
-          exec herdr
-      fi
+      # if [ -z "$HERDR_ENV" ]; then
+      #     exec herdr
+      # fi
 
       # Nix direnv shell hook
       eval "$(direnv hook zsh)"
