@@ -42,7 +42,7 @@
     mermaid-cli # mermaid diagrams
 
     # markdown
-    marksman
+    markdownlint-cli2
     icu # Unicode and globalization support library # marksman-lsp
 
     # JSON
