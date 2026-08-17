@@ -108,6 +108,14 @@
     pulse.enable = true;
   };
 
+  # for espanso support
+  hardware.uinput.enable = true;
+
+  services.espanso = {
+    enable = true;
+    package = pkgs.espanso-wayland;
+  };
+
   users.users.vanshaj = {
     isNormalUser = true;
     description = "Vanshaj Saxena";
@@ -115,6 +123,7 @@
       "networkmanager"
       "wheel"
       "input"
+      "uinput" # espanso support
     ];
     shell = pkgs.zsh;
   };
