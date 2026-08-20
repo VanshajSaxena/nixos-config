@@ -199,6 +199,7 @@
     dust # du alternative
     scc # code counter
     hyperfine # benchmarking tool
+    hyprlock
     tectonic
     ghostscript
     wev # wayland event viewer

@@ -88,6 +88,7 @@
   services.displayManager.ly.enable = true;
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = [ nixos-stable.kdePackages.kate ];
+  security.pam.services.hyprlock = { };
 
   services.xserver = {
     xkb.layout = "us";
