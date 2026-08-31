@@ -8,6 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./remote-access.nix
     inputs.niri-flake.nixosModules.niri
   ];
 

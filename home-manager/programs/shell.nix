@@ -27,12 +27,28 @@
       # disable the mark in the insert mode too (although not visible by default)
       export INSERT_MODE_INDICATOR=""
 
-      # if [ -z "$HERDR_ENV" ]; then
-      #     exec herdr
-      # fi
-
       # Nix direnv shell hook
       eval "$(direnv hook zsh)"
+
+      # Drop remote logins straight into the persistent herdr session, so a
+      # phone lands in the workspace the agents are already running in.
+      #
+      # Guards, in order:
+      #   - interactive only, so scp/rsync/`ssh NIXOS <cmd>` are untouched
+      #   - HERDR_ENV=1 is exported inside herdr-managed panes; without this
+      #     check every pane shell would recursively launch herdr again
+      #   - NO_HERDR= is a manual escape hatch
+      # mosh does not export SSH_CONNECTION, so the remote test also looks for
+      # mosh-server as the parent process.
+      #
+      # herdr is deliberately not exec'd: if it ever fails to start, the login
+      # falls through to a normal shell instead of dropping the connection,
+      # which matters when this is the only way back into the machine.
+      if [[ -o interactive && -z "$HERDR_ENV" && -z "$NO_HERDR" ]]; then
+        if [[ -n "$SSH_CONNECTION" || "$(ps -o comm= -p $PPID 2>/dev/null)" = "mosh-server" ]]; then
+          herdr
+        fi
+      fi
     '';
     shellAliases = {
       vim = "nvim";
