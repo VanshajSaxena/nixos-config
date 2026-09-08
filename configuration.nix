@@ -84,6 +84,8 @@
     '';
   };
 
+  virtualisation.docker.enable = true;
+
   services.xserver.enable = true;
 
   services.displayManager.ly.enable = true;
@@ -126,6 +128,7 @@
       "wheel"
       "input"
       "uinput" # espanso support
+      "docker"
     ];
     shell = pkgs.zsh;
   };
