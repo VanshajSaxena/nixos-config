@@ -162,6 +162,10 @@
     };
   };
 
+  programs.superfile = {
+    enable = true;
+  };
+
   xdg.configFile."tig/config".text = ''
     bind generic <Esc> view-close
     bind generic h view-close
